@@ -1,0 +1,3 @@
+Test name: SeleniumTestsDemoQaPage.ToolsQaTests.ResizableItem_ResizeSides100PixBigger_ItemSidesAre100PixBigger
+Work directory: C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+Pass count: 0
