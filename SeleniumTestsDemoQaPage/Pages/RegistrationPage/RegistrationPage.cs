@@ -16,15 +16,11 @@ namespace SeleniumTestsDemoQaPage.Pages.RegistrationPage
         }
 
         public string URL
-        { get
-            {
-                return "http://demoqa.com/registration/";
-            }
-        }
-
-        public void NavigateTo()
         {
-            this.Driver.Navigate().GoToUrl(this.URL);
+            get
+            {
+                return base.url + "registration/";
+            }
         }
 
         public void FillRegistrationForm(RegistrationUser user)
@@ -48,21 +44,55 @@ namespace SeleniumTestsDemoQaPage.Pages.RegistrationPage
             this.SubmitButton.Click();
         }
 
-        private void ClickOnElements(List<IWebElement> elements, List<bool> conditions)
+        private void ClickOnElements(List<IWebElement> elements, string values)
         {
-            for (int i = 0; i < elements.Count; i++)
+            // parse string 'values' to List<int>
+            List<string> itemsToClick = values.Split(',').ToList();
+            List<int> numsToClick = new List<int>();
+            for (int i = 0; i < itemsToClick.Count; i++)
             {
-                if (conditions[i])
-                {
-                    elements[i].Click();
-                }
+                numsToClick.Add(int.Parse(itemsToClick[i]));
             }
+
+            // if clickableElement's number exists in the list, clik the Element
+            for (int clickableElement = 0; clickableElement < elements.Count; clickableElement++)
+            {
+                //* This is more elegant solution but it skips to click on MaritalStatus when there is only one digit in the Excel cell
+                if (numsToClick.Contains(clickableElement))
+                {
+                    /* The next row is needed to "find" the radiobutton and click it. Otherwise it doesn't click on it.
+                     * Otherwise, I guess you need to handle it like a drop-down selection - one step to find it and second step to select an option.
+                     */
+                    elements[clickableElement].Submit();
+
+                    elements[clickableElement].Click();
+                }
+
+
+                //Instead of the elegant solution:
+                //     for (int numToClick = 0; numToClick < numsToClick.Count; numToClick++)
+                //     {
+                //         if (numsToClick[numToClick].Equals(clickableElement))
+                //         {
+                //             elements[clickableElement].Click();
+                //         }
+                //     }
+
+            }
+        }
+
+        private void SelectRadioButton(List<IWebElement> elements, int value)
+        {
+            elements[value].Click();
         }
 
         private void Type(IWebElement element, string text)
         {
             element.Clear();
-            element.SendKeys(text);
+            if (text != null)
+            {
+                element.SendKeys(text);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -23,13 +23,18 @@ namespace SeleniumTestsDemoQaPage
     {
         private IWebDriver driver;
 
+        [SetUp]
+        public void Init()
+        {
+            this.driver = new FirefoxDriver();
+        }
+
         [Test]
         [Property("ToolsQa", 3)]
         [Description("Exercise 1 from the lecture - Open ToolsQa_switch_windows_practice, click on New Tab button, assert the ToolsQaHOmePage is open, then close the first tab and assert Driver handles only one window/tab")]
         [Author("vankatabe")]
         public void HandlePopUp()
         {
-            this.driver = new FirefoxDriver();
             var automationPage = new AutomationPage(this.driver);
             var homePage = new ToolsQaHomePage(this.driver);
 
@@ -53,7 +58,6 @@ namespace SeleniumTestsDemoQaPage
         [Author("vankatabe")]
         public void DraggableElement_DragAndDropToTarget_TargetAttributeChangedToDropped()
         {
-            this.driver = new FirefoxDriver();
             var droppablePage = new DroppablePage(this.driver);
             droppablePage.NavigateTo(droppablePage.URL);
 
@@ -68,7 +72,6 @@ namespace SeleniumTestsDemoQaPage
         [Author("vankatabe")]
         public void ResizableItem_ResizeSides100PixBigger_ItemSidesAre100PixBigger()
         {
-            this.driver = new FirefoxDriver();
             var resizablePage = new ResizablePage(this.driver);
             resizablePage.NavigateTo(resizablePage.URL);
 
@@ -77,17 +80,13 @@ namespace SeleniumTestsDemoQaPage
             resizablePage.AssertSizeIncreasedWith(100);
         }
 
-        [Test]
-        public void loginSoftUni()
+        [Test] // This test utilises both Data-driven tests and Log functonality (below)
+        [Property("ToolsQa", 3)]
+        [Description("Exercise 4 from the lecture - Add Logger to SoftUni Test")]
+        [Author("vankatabe")]
+        public void loginSoftUni_ValidCredentials_CorrectLogoDisplayedAfterLogin()
         {
-            this.driver = new FirefoxDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            /*
-             * Another way of wait - probably more proper:
-             * WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-             * IWebElement loginButton = wait.Until<IWebElement>((w) => { return w.FindElement(By.LinkText("Вход")); });
-             * loginButton.Click();
-             */
             driver.Url = "http://www.softuni.bg";
             IWebElement loginButton = driver.FindElement(By.XPath("//nav[@id='header-nav']/div[2]/ul/li[2]/span/a"));
             loginButton.Click();
@@ -103,12 +102,13 @@ namespace SeleniumTestsDemoQaPage
             IWebElement loginButton2 = driver.FindElement(By.XPath("//form/input[2]"));
             loginButton2.Click();
             IWebElement logo = driver.FindElement(By.XPath("//header[@id='page-header']/div/div/div/div/a/img"));
-            Assert.IsTrue(logo.Displayed);
+            Assert.IsTrue(logo.Displayed, "The logo is not displayed properly");
         }
 
         [TearDown]
         public void CleanUp()
         {
+            // Add Logger to SoftUni Test
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 string filename = ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".txt";
@@ -116,13 +116,18 @@ namespace SeleniumTestsDemoQaPage
                 {
                     File.Delete(filename);
                 }
-                File.WriteAllText(filename, "Test name: " + TestContext.CurrentContext.Test.FullName + "\r\n" + "Work directory: " + TestContext.CurrentContext.WorkDirectory + "\r\n" + "Pass count: " + TestContext.CurrentContext.Result.PassCount);
+                File.WriteAllText(filename,
+                    "Test full name: " + TestContext.CurrentContext.Test.FullName + "\r\n"
+                    + "Work directory: " + TestContext.CurrentContext.WorkDirectory + "\r\n"
+                    + "Pass count: " + TestContext.CurrentContext.Result.PassCount + "\r\n"
+                    + "Result: " + TestContext.CurrentContext.Result.Outcome.ToString() + "\r\n"
+                    + "Message: " + TestContext.CurrentContext.Result.Message);
 
                 var screenshot = ((ITakesScreenshot)this.driver).GetScreenshot();
-                screenshot.SaveAsFile(filename + TestContext.CurrentContext.Test.Name + ".jpg", ScreenshotImageFormat.Jpeg);
+                screenshot.SaveAsFile(ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg", ScreenshotImageFormat.Jpeg);
             }
 
-            //driver.Quit();
+             driver.Quit(); // causes Firefox to crash
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+﻿    using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -31,8 +31,10 @@ namespace SeleniumTestsDemoQaPage.Pages.RegistrationPage
             get
             {
                 return this.Driver.FindElements(By.Name("radio_4[]")).ToList();
-            }
+            }   
         }
+
+
 
         public List<IWebElement> Hobbies
         {

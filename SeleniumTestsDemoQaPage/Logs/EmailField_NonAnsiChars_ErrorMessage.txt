@@ -1,0 +1,10 @@
+Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_NonAnsiChars_ErrorMessage
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed:Error
+
+Message:	OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='post-49']/div/p

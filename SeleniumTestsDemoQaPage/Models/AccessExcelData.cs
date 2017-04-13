@@ -32,5 +32,17 @@ namespace SeleniumTestsDemoQaPage.Models
                 return value;
             }
         }
+
+        public static RegistrationUser GetTestUserData(string keyName)
+        {
+            using (var connection = new OleDbConnection(TestDataFileConnection()))
+            {
+                connection.Open();
+                var query = string.Format("select * from [DataSetRegistrationUser$] where key = '{0}'", keyName); // DataSetRegistrationUser - name of the xlsx sheet where our data is
+                var value = connection.Query<RegistrationUser>(query).FirstOrDefault();
+                connection.Close();
+                return value;
+            }
+        }
     }
 }

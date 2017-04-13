@@ -1,10 +1,13 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using SeleniumTestsDemoQaPage.Models;
 using SeleniumTestsDemoQaPage.Pages.RegistrationPage;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 
 namespace SeleniumTestsDemoQaPage
 {
@@ -22,7 +25,28 @@ namespace SeleniumTestsDemoQaPage
         [TearDown]
         public void CleanUp()
         {
-            //  this.driver.Quit(); // makes Firefox to crash on a 64-bit system :(
+            // Add txt logger and screenshot for failed tests
+            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+            {
+                string filename = ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".txt";
+
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                }
+
+                File.WriteAllText(filename,
+                    "Test full name:\t" + TestContext.CurrentContext.Test.FullName + "\r\n\r\n"
+                    + "Work directory:\t" + TestContext.CurrentContext.WorkDirectory + "\r\n\r\n"
+                    + "Pass count:\t" + TestContext.CurrentContext.Result.PassCount + "\r\n\r\n"
+                    + "Result:\t" + TestContext.CurrentContext.Result.Outcome.ToString() + "\r\n\r\n"
+                    + "Message:\t" + TestContext.CurrentContext.Result.Message);
+
+                var screenshot = ((ITakesScreenshot)this.driver).GetScreenshot();
+                screenshot.SaveAsFile(ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg", ScreenshotImageFormat.Jpeg);
+            }
+
+             driver.Quit(); // causes Firefox to crash
         }
 
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 1),
@@ -32,23 +56,9 @@ namespace SeleniumTestsDemoQaPage
         public void FirstNameField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertNameErrorMessage("* This field is required");
@@ -60,23 +70,9 @@ namespace SeleniumTestsDemoQaPage
         public void LastNameField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertNameErrorMessage("* This field is required");
@@ -88,23 +84,9 @@ namespace SeleniumTestsDemoQaPage
         public void FirstNameLastNameField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("",
-                                                         "",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertNameErrorMessage("* This field is required");
@@ -116,23 +98,9 @@ namespace SeleniumTestsDemoQaPage
         public void HobbyCheckboxes_Unchecked_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { false, false, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertHobbyErrorMessage("* This field is required");
@@ -144,23 +112,9 @@ namespace SeleniumTestsDemoQaPage
         public void TelephoneNumberField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertTelephoneErrorMessage("* This field is required");
@@ -173,23 +127,9 @@ namespace SeleniumTestsDemoQaPage
         public void TelephoneNumberField_TooShortNumber_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "012345678",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertTelephoneErrorMessage("Minimum 10 Digits starting with Country Code");
@@ -201,23 +141,9 @@ namespace SeleniumTestsDemoQaPage
         public void TelephoneNumberField_NonNumericalCharacters_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789abc",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertTelephoneErrorMessage("Minimum 10 Digits starting with Country Code");
@@ -229,23 +155,9 @@ namespace SeleniumTestsDemoQaPage
         public void UsernameField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertUsernameErrorMessage("* This field is required");
@@ -257,23 +169,9 @@ namespace SeleniumTestsDemoQaPage
         public void UsernameField_DuplicateUsername_ErrorMessage() // Needs a lot of wait
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertTopOfPageErrorMessage("Username already exists");
@@ -285,23 +183,9 @@ namespace SeleniumTestsDemoQaPage
         public void EmailField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertEmailErrorMessage("* This field is required");
@@ -313,23 +197,9 @@ namespace SeleniumTestsDemoQaPage
         public void EmailField_InvalidEmailAddressFormat_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "invalid.email-address@format",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertEmailErrorMessage("* Invalid email address");
@@ -341,23 +211,9 @@ namespace SeleniumTestsDemoQaPage
         public void EmailField_NotAllowedCharacters_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@tes;:t.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertEmailErrorMessage("* Invalid email address");
@@ -369,23 +225,9 @@ namespace SeleniumTestsDemoQaPage
         public void EmailField_NonAnsiChars_ErrorMessage() // Needs a lot of wait
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "userюзер@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             //regPage.AssertTopOfPageErrorMessage("Invalid E-mail address"); // This Assert fails if there are more errors than only Email address - e.g. if Username already exists
@@ -393,29 +235,15 @@ namespace SeleniumTestsDemoQaPage
         }
 
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 14),
-     Description("Test Email field with already used email, expected Error message")]
+        Description("Test Email field with already used email, expected Error message")]
         [Author("vankatabe")]
         // Username must be unique / not duplicate
         public void EmailField_DuplicateEmail_ErrorMessage() // Needs a lot of wait
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername3",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             //regPage.AssertTopOfPageErrorMessage("Invalid E-mail address"); // This Assert fails if there are more errors than only Email address - e.g. if Username already exists
@@ -426,26 +254,12 @@ namespace SeleniumTestsDemoQaPage
         [Test, Property("Priority", 4), Property("Test No. from First iteration", 15),
         Description("Test Picture field with invalid file format, expected Error message")]
         [Author("vankatabe")]
-        public void PictureField_InvalidFileFormat_ErrorMessag()
+        public void PictureField_InvalidFileFormat_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Program Files (x86)\Microsoft Silverlight\sllauncher.exe",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertPictureErrorMessage("* Invalid File");
@@ -457,23 +271,9 @@ namespace SeleniumTestsDemoQaPage
         public void PassworField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertPasswordErrorMessage("* This field is required");
@@ -485,23 +285,9 @@ namespace SeleniumTestsDemoQaPage
         public void PassworField_TooShortPassword_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "shortPs",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertPasswordErrorMessage("* Minimum 8 characters required");
@@ -513,23 +299,9 @@ namespace SeleniumTestsDemoQaPage
         public void ConfirmPassworField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertConfirmPasswordErrorMessage("* This field is required");
@@ -541,23 +313,9 @@ namespace SeleniumTestsDemoQaPage
         public void ConfirmPasswordField_NotMatchingPassword_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "notMatchingConfirmPassString");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertConfirmPasswordErrorMessage("* Fields do not match");
@@ -569,52 +327,24 @@ namespace SeleniumTestsDemoQaPage
         public void ConfirmPasswordField_NotMatchingPassword_ErrorMessageInPassStrengthField()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "notMatchingConfirmPassString");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertPasswordStrengthErrorMessage("Mismatch");
         }
 
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 25),
-     Description("Test Username field with already used email and Email field with already used username expected two Error messages")]
+        Description("Test Username field with already used email and Email field with already used username expected two Error messages")]
         [Author("vankatabe")]
         // This test fails - only Username Eror message appears
-        public void UsernameFieldEmailField_DuplicateEmailAndUsername_ErrorMessages() // Needs a lot of wait
+        public void UsernameFieldAndEmailField_DuplicateEmailAndUsername_ErrorMessages() // Needs a lot of wait
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = new RegistrationUser("Ivan",
-                                                         "Deianov",
-                                                         new List<bool>(new bool[] { false, false, true }),
-                                                         new List<bool>(new bool[] { true, true, false }),
-                                                         "Bulgaria",
-                                                         "2",
-                                                         "2",
-                                                         "1980",
-                                                         "0123456789",
-                                                         "MyUsername",
-                                                         "user@test.com",
-                                                         @"C:\Users\Public\Pictures\Sample Pictures\Koala.jpg",
-                                                         "Short description",
-                                                         "validPass",
-                                                         "validPass");
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
 
-            regPage.NavigateTo();
+            regPage.NavigateTo(regPage.URL);
             regPage.FillRegistrationForm(user);
 
             regPage.AssertTopOfPageErrorMessage("Username already exists");
