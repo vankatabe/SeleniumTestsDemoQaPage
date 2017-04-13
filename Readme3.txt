@@ -6,3 +6,5 @@ The new homework tests are in RgistrationFormTests.cs
 See the two Excel files in \\SeleniumTestsDemoQaPage\DataDrivenTests - from Possible negative tests.xlsx 'First iteration', I took the scenarios and implemented them in UserData.xlsx
 
 Also, I included here the exercises from the lecture PopUp, Dragable, etc. - they are interesting, too.
+
+Don't forget to put your own paths in Config\Environment.config file :)

@@ -82,6 +82,10 @@
     <Compile Include="ToolsQaTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\Environment.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
