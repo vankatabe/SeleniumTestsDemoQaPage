@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InteractionTests.cs" />
     <Compile Include="Models\AccessExcelData.cs" />
     <Compile Include="Models\RegistrationUser.cs" />
     <Compile Include="Models\SoftUniUser.cs" />

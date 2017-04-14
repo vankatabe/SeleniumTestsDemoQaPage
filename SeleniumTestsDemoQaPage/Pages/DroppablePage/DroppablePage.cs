@@ -26,7 +26,7 @@ namespace SeleniumTestsDemoQaPage.Pages.DroppablePage
 
         public void DragAndDrop()
         {
-            // this.NavigateTo(URL); - just to try if it would work from here. The real NavigateTo() is in the Test
+            // this.NavigateTo(URL); - just to try if this row would work from here. The real NavigateTo() is in the Test
             Actions builder = new Actions(this.Driver);
             var drag = builder.DragAndDrop(this.DroppableElement, this.TargetElement);
             drag.Perform();
