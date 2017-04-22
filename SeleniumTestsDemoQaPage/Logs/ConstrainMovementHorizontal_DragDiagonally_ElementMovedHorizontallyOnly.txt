@@ -1,0 +1,9 @@
+Test full name:	SeleniumTestsDemoQaPage.DraggableTests.ConstrainMovementHorizontal_DragDiagonally_ElementMovedHorizontallyOnly
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed:Error
+
+Message:	System.InvalidOperationException : (409.1499938964844, -314.8500061035156) is out of bounds of viewport width (1280) and height (625) (InvalidElementCoordinates)

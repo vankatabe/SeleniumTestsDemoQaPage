@@ -26,5 +26,13 @@ namespace SeleniumTestsDemoQaPage.Pages.DraggablePage
             }
         }
         */
+
+        public IWebElement DraggableElementConstraint
+        {
+            get
+            {
+                return this.Driver.FindElement(By.Id("draggabl2"));
+            }
+        }
     }
 }

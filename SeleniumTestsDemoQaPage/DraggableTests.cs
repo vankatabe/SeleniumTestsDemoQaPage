@@ -67,9 +67,28 @@ namespace SeleniumTestsDemoQaPage
             draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
             draggablePage.NavigateTo(draggablePage.URL);
 
-            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset));
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElement);
 
-            draggablePage.AssertElementIsMoved(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset));
+            draggablePage.AssertElementIsMoved(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElement);
+        }
+
+        [Test]
+        [Property("Draggable", 2), Property("Draggable test tab Number:", 3)] // Constrain movement = tab no 3
+        [Description("Constrain movement: Drag diagonally a horizontally-only-draggable element, check if element position changed only horizontally")]
+        [Author("vankatabe")]
+        public void ConstrainMovementHorizontal_DragDiagonally_ElementMovedHorizontallyOnly()
+        {
+            var draggablePage = new DraggablePage(this.driver);
+            InteractionPages drag = AccessExcelData.GetInteractionTestsData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = ConstrainMovementHorizontal_DragDiagonally_ElementMovedHorizontallyOnly) and use it as a Key in the xlsx file
+            // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
+            draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
+            draggablePage.NavigateTo(draggablePage.URL);
+            // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", draggablePage.DraggableElementConstraint);
+
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementConstraint);
+
+            draggablePage.AssertElementIsMoved(int.Parse(drag.HorizontalOffset), 0, draggablePage.DraggableElementConstraint);
         }
 
         [Test]
