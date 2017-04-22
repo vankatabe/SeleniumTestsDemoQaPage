@@ -5,6 +5,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
 using SeleniumTestsDemoQaPage.Models;
 using SeleniumTestsDemoQaPage.Pages.AutomationPracticePage;
+using SeleniumTestsDemoQaPage.Pages.DraggablePage;
 using SeleniumTestsDemoQaPage.Pages.DroppablePage;
 using SeleniumTestsDemoQaPage.Pages.ResizablePage;
 using SeleniumTestsDemoQaPage.Pages.ToolsQaHomePage;
@@ -19,7 +20,7 @@ using System.Threading.Tasks;
 namespace SeleniumTestsDemoQaPage
 {
     [TestFixture]
-    public class ToolsQaTests
+    public class DraggableTests
     {
         private IWebDriver driver;
 
@@ -32,7 +33,7 @@ namespace SeleniumTestsDemoQaPage
         [TearDown]
         public void CleanUp()
         {
-            // Add Logger to SoftUni Test
+            // Add logger for failed tests
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 string filename = ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".txt";
@@ -51,37 +52,30 @@ namespace SeleniumTestsDemoQaPage
                 screenshot.SaveAsFile(ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg", ScreenshotImageFormat.Jpeg);
             }
 
-            driver.Quit(); // causes Firefox to crash
+          //  driver.Quit(); // causes Firefox to crash
         }
 
         [Test]
-        [Property("ToolsQa", 3)]
-        [Description("Exercise 1 from the lecture - Open ToolsQa_switch_windows_practice, click on New Tab button, assert the ToolsQaHOmePage is open, then close the first tab and assert Driver handles only one window/tab")]
+        [Property("Draggable", 1), Property("Draggable test tab Number:", 1)] // Default functionality = tab no 1
+        [Description("Default functionality: Drag a draggable element to the diagonally opposite corner of the containing window, check if element is dragged to the new location")]
         [Author("vankatabe")]
-        public void HandlePopUp()
+        public void DefaultFunctionality_DragToOppositeCorner_ElementMovedToOppositeCorner()
         {
-            var automationPage = new AutomationPage(this.driver);
-            var homePage = new ToolsQaHomePage(this.driver);
+            var draggablePage = new DraggablePage(this.driver);
+            // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
+            draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
+            draggablePage.NavigateTo(draggablePage.URL);
 
-            automationPage.NavigateTo();
-            automationPage.NewTabButton.Click();
-            this.driver.SwitchTo().ActiveElement();
+            draggablePage.DragObject();
 
-            // Check is logo has "src" attribute
-            homePage.AssertToolsQaLogoSrcContains("/wp-content/uploads/2014/08/Toolsqa.jpg");
-
-            // Close the first open tab
-            automationPage.PageClose();
-
-            // Check that the driver handles only one window (in ToolsQaHomePageAsserter.cs)
-            driver.AssertNumberOfWindowsHandled(1); // Attention: There are two asserts in the method
+            draggablePage.AssertElementIsMoved(100, 100);
         }
 
         [Test]
-        [Property("ToolsQa", 3)]
-        [Description("Exercise 2 from the lecture - Drag a droppable element and drop it into its target ")]
+        [Property("Interaction type:", 1), Property("Draggable tests number:", 2)]
+        [Description("1 - Draggable: Drag a draggable element and drop it into its target, check if target status is dropped")]
         [Author("vankatabe")]
-        public void DroppableElement_DragAndDropToTarget_TargetAttributeChangedToDropped()
+        public void DraggableElement_DragAndDropToTarget_TargetAttributeChangedToDropped9()
         {
             var droppablePage = new DroppablePage(this.driver);
             droppablePage.NavigateTo(droppablePage.URL);
@@ -92,8 +86,8 @@ namespace SeleniumTestsDemoQaPage
         }
 
         [Test]
-        [Property("ToolsQa", 3)]
-        [Description("Exercise 3 from the lecture - Resize resizable item with H and W with 100 pixels each")]
+        [Property("Interaction", 3)]
+        [Description("Exercise 3 from the lecture - Resize resizable item bith H and W with 100 pixels each")]
         [Author("vankatabe")]
         public void ResizableItem_ResizeSides100PixBigger_ItemSidesAre100PixBigger()
         {
@@ -106,7 +100,7 @@ namespace SeleniumTestsDemoQaPage
         }
 
         [Test] // This test utilises both Data-driven tests and Log functonality (below)
-        [Property("ToolsQa", 3)]
+        [Property("Interaction", 3)]
         [Description("Exercise 4 from the lecture - Add Logger to SoftUni Test")]
         [Author("vankatabe")]
         public void loginSoftUni_ValidCredentials_CorrectLogoDisplayedAfterLogin()
@@ -130,6 +124,6 @@ namespace SeleniumTestsDemoQaPage
             Assert.IsTrue(logo.Displayed, "The logo is not displayed properly");
         }
 
-       
+
     }
 }

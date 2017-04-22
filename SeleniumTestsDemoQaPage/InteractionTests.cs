@@ -55,10 +55,10 @@ namespace SeleniumTestsDemoQaPage
         }
 
         [Test]
-        [Property("Interaction type:", 1), Property("Draggable tests number:", 1)]
-        [Description("1 - Draggable: Drag a draggable element and drop it into its target, check if target status is dropped")]
+        [Property("Interaction type:", 2), Property("Droppable tests number:", 1)]
+        [Description("2 - Droppable: Drag a droppable element and drop it into its target, check if target status is dropped")]
         [Author("vankatabe")]
-        public void DraggableElement_DragAndDropToTarget_TargetAttributeChangedToDropped()
+        public void DroppableElement_DragAndDropToTarget_TargetAttributeChangedToDropped()
         {
             var droppablePage = new DroppablePage(this.driver);
             droppablePage.NavigateTo(droppablePage.URL);

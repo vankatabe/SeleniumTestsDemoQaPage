@@ -56,14 +56,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DraggableTests.cs" />
     <Compile Include="InteractionTests.cs" />
     <Compile Include="Models\AccessExcelData.cs" />
+    <Compile Include="Models\InteractionPages.cs" />
     <Compile Include="Models\RegistrationUser.cs" />
     <Compile Include="Models\SoftUniUser.cs" />
     <Compile Include="Pages\AutomationPracticePage\AutomationPage.cs" />
     <Compile Include="Pages\AutomationPracticePage\AutomationPageAsserter.cs" />
     <Compile Include="Pages\AutomationPracticePage\AutomationPageMap.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\DraggablePage\DraggablePage.cs" />
+    <Compile Include="Pages\DraggablePage\DraggablePageAsserter.cs" />
+    <Compile Include="Pages\DraggablePage\DraggablePageMap.cs" />
     <Compile Include="Pages\DroppablePage\DroppablePage.cs" />
     <Compile Include="Pages\DroppablePage\DroppablePageAsserter.cs" />
     <Compile Include="Pages\DroppablePage\DroppablePageMap.cs" />
