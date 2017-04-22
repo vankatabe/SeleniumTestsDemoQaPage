@@ -17,6 +17,7 @@ namespace SeleniumTestsDemoQaPage.Pages.DraggablePage
             }
         }
 
+        /* I thought to use this Container element's size and drag the Draggable in some relation to that size. But maybe next time
         public IWebElement ContainerElement
         {
             get
@@ -24,5 +25,6 @@ namespace SeleniumTestsDemoQaPage.Pages.DraggablePage
                 return this.Driver.FindElement(By.Id("tabs-1"));
             }
         }
+        */
     }
 }

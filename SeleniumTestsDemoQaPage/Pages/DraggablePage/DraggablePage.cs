@@ -30,15 +30,13 @@ namespace SeleniumTestsDemoQaPage.Pages.DraggablePage
         public int VerticalPosition { get { return this.verticalPosition; } }
 
 
-        public void DragObject()
+        public void DragObject(int horizontalOffset, int verticalOffset)
         {
             this.horizontalPosition = this.DraggableElement.Location.X;
             this.verticalPosition = this.DraggableElement.Location.Y;
             Actions builder = new Actions(this.Driver);
-            var drag = builder.DragAndDropToOffset(this.DraggableElement, 100, 100);
+            var drag = builder.DragAndDropToOffset(this.DraggableElement, horizontalOffset, verticalOffset);
             drag.Perform();
         }
-
-        
     }
 }

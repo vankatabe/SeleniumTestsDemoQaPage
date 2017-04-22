@@ -45,13 +45,13 @@ namespace SeleniumTestsDemoQaPage.Models
             }
         }
 
-        public static InteractionPages GetInteractionTestsData(string keyName) // SoftUniUser - named after the source (xlsx) file
+        public static InteractionPages GetInteractionTestsData(string keyName)
         {
             using (var connection = new OleDbConnection(TestDataFileConnection()))
             {
                 connection.Open();
-                var query = string.Format("select * from [DataSet$] where key = '{0}'", keyName); // DataSetInteractionPages - name of the xlsx sheet where our data is
-                var value = connection.Query<SoftUniUser>(query).FirstOrDefault();
+                var query = string.Format("select * from [DataSetInteractionPages$] where key = '{0}'", keyName); // DataSetInteractionPages - name of the xlsx sheet where our data is
+                var value = connection.Query<InteractionPages>(query).FirstOrDefault();
                 connection.Close();
                 return value;
             }

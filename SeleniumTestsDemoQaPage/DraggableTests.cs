@@ -62,13 +62,14 @@ namespace SeleniumTestsDemoQaPage
         public void DefaultFunctionality_DragToOppositeCorner_ElementMovedToOppositeCorner()
         {
             var draggablePage = new DraggablePage(this.driver);
+            InteractionPages drag = AccessExcelData.GetInteractionTestsData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = DefaultFunctionality_DragToOppositeCorner_ElementMovedToOppositeCorner) and use it as a Key in the xlsx file
             // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
             draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
             draggablePage.NavigateTo(draggablePage.URL);
 
-            draggablePage.DragObject();
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset));
 
-            draggablePage.AssertElementIsMoved(100, 100);
+            draggablePage.AssertElementIsMoved(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset));
         }
 
         [Test]
