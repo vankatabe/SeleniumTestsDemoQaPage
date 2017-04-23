@@ -1,0 +1,10 @@
+Test full name:	SeleniumTestsDemoQaPage.ToolsQaTests.ResizableItem_ResizeWidth100PixBigger_ItemWidthIs100PixBigger
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  Expected: 250
+  But was:  233

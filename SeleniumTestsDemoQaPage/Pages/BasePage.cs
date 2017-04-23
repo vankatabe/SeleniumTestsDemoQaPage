@@ -41,5 +41,13 @@ namespace SeleniumTestsDemoQaPage.Pages
         {
             this.Driver.Navigate().GoToUrl(url);
         }
+
+        public IWebElement TopOfPage
+        {
+            get
+            {
+                return this.Driver.FindElement(By.TagName("h1"));
+            }
+        }
     }
 }

@@ -17,11 +17,59 @@ namespace SeleniumTestsDemoQaPage.Pages.ResizablePage
             }
         }
 
+        public IWebElement resizeSide
+        {
+            get
+            {
+                return this.Driver.FindElement(By.XPath("//*[@id='resizable']/div"));
+            }
+        }
+
         public IWebElement resizeWindow
         {
             get
             {
                 return this.Driver.FindElement(By.Id("resizable"));
+            }
+        }
+
+        public IWebElement resizableElementTab3
+        {
+            get
+            {
+                return this.Driver.FindElement(By.Id("resizableconstrain"));
+            }
+        }
+
+        public IWebElement containerElementTab3
+        {
+            get
+            {
+                return this.Driver.FindElement(By.Id("container1"));
+            }
+        }
+
+        public IWebElement resizeButtonTab3
+        {
+            get
+            {
+                return this.Driver.FindElement(By.XPath("//*[@id='resizableconstrain']/div[3]"));
+            }
+        }
+
+        public IWebElement resizeButtonTab5
+        {
+            get
+            {
+                return this.Driver.FindElement(By.XPath("//*[@id='resizable_max_min']/div[3]"));
+            }
+        }
+
+        public IWebElement resizableElementTab5
+        {
+            get
+            {
+                return this.Driver.FindElement(By.Id("resizable_max_min"));
             }
         }
     }

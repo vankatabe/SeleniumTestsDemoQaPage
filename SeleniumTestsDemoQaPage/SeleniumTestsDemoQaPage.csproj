@@ -56,6 +56,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\SelectablePage\SelectablePage.cs" />
+    <Compile Include="Pages\SelectablePage\SelectablePageAsserter.cs" />
+    <Compile Include="Pages\SelectablePage\SelectablePageMap.cs" />
+    <Compile Include="ResizableTests.cs" />
     <Compile Include="DraggableTests.cs" />
     <Compile Include="DroppableTests.cs" />
     <Compile Include="Models\AccessExcelData.cs" />

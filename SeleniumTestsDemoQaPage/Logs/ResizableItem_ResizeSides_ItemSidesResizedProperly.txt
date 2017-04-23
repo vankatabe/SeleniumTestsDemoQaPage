@@ -1,0 +1,10 @@
+Test full name:	SeleniumTestsDemoQaPage.ResizableTests.ResizableItem_ResizeSides_ItemSidesResizedProperly
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  Expected: 270
+  But was:  253

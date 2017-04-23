@@ -9,6 +9,7 @@ namespace SeleniumTestsDemoQaPage.Pages.DroppablePage
 {
     public partial class DroppablePage
     {
+        /* Sent to Base page:
         public IWebElement TopOfPage
         {
             get
@@ -16,6 +17,7 @@ namespace SeleniumTestsDemoQaPage.Pages.DroppablePage
                 return this.Driver.FindElement(By.TagName("h1"));
             }
         }
+        */
 
         public IWebElement DroppableElement
         {

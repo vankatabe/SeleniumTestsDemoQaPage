@@ -105,6 +105,20 @@ namespace SeleniumTestsDemoQaPage
             resizablePage.AssertSizeIncreasedWith(100);
         }
 
+        [Test]
+        [Property("ToolsQa", 3)]
+        [Description("Exercise 3 from the lecture another try - Resize resizable item width with 100 pixels")]
+        [Author("vankatabe")]
+        public void ResizableItem_ResizeWidth100PixBigger_ItemWidthIs100PixBigger()
+        {
+            var resizablePage = new ResizablePage(this.driver);
+            resizablePage.NavigateTo(resizablePage.URL);
+
+            resizablePage.IncreaseWidthBy(100);
+
+            resizablePage.AssertWidthIncreasedWith(100);
+        }
+
         [Test] // This test utilises both Data-driven tests and Log functonality (below)
         [Property("ToolsQa", 3)]
         [Description("Exercise 4 from the lecture - Add Logger to SoftUni Test")]
