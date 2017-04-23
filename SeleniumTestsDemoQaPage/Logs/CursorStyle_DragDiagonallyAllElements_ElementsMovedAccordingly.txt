@@ -1,0 +1,11 @@
+Test full name:	SeleniumTestsDemoQaPage.DraggableTests.CursorStyle_DragDiagonallyAllElements_ElementsMovedAccordingly
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  X-offset not correct
+  Expected: 504
+  But was:  278

@@ -15,6 +15,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SeleniumTestsDemoQaPage
@@ -66,10 +67,12 @@ namespace SeleniumTestsDemoQaPage
             // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
             draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
             draggablePage.NavigateTo(draggablePage.URL);
+            // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", draggablePage.TopOfPage);
 
             draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElement);
 
-            draggablePage.AssertElementIsMoved(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElement);
+            draggablePage.AssertElementIsMovedCorrectly(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElement);
         }
 
         [Test]
@@ -84,66 +87,84 @@ namespace SeleniumTestsDemoQaPage
             draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
             draggablePage.NavigateTo(draggablePage.URL);
             // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", draggablePage.DraggableElementConstraint);
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", draggablePage.TopOfPage);
 
             draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementConstraint);
 
-            draggablePage.AssertElementIsMoved(int.Parse(drag.HorizontalOffset), 0, draggablePage.DraggableElementConstraint);
+            draggablePage.AssertElementIsMovedCorrectly(int.Parse(drag.HorizontalOffset), 0, draggablePage.DraggableElementConstraint);
         }
 
         [Test]
-        [Property("Interaction type:", 1), Property("Draggable tests number:", 2)]
-        [Description("1 - Draggable: Drag a draggable element and drop it into its target, check if target status is dropped")]
+        [Property("Draggable", 3), Property("Draggable test tab Number:", 4)] // Cursor style = tab no 4
+        [Description("Cursor style: Drag all dragables diagonally with same offset, check if elements' positions changed properly")]
         [Author("vankatabe")]
-        public void DraggableElement_DragAndDropToTarget_TargetAttributeChangedToDropped9()
+        /* Not all of this test's Asserts will pass. Because of the nature of the draggable elements on the page. It could be adjusted to pass, though
+         *  - by calculating the correct cursor positions and offsets - get the size of the element, divide by two.
+         *  Then for the "-5" element - extract from the expected offset 5 and extract also size/2 - for both horizontal and vertical coordinates
+         *  For the "bottom" element - extract from expected offset size(height)/2 for the vertical coordinate
+         */
+        public void CursorStyle_DragDiagonallyAllElements_ElementsMovedAccordingly()
         {
-            var droppablePage = new DroppablePage(this.driver);
-            droppablePage.NavigateTo(droppablePage.URL);
+            var draggablePage = new DraggablePage(this.driver);
+            InteractionPages drag = AccessExcelData.GetInteractionTestsData(TestContext.CurrentContext.Test.Name); // Get the current test method name (CursorStyle_DragDiagonallyAllElements_ElementsMovedAccordingly) and use it as a Key in the xlsx file
+            // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
+            draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
+            draggablePage.NavigateTo(draggablePage.URL);
+            // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", draggablePage.TopOfPage);
 
-            droppablePage.DragAndDrop();
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCursor1);
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCursor2);
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCursor3);
 
-            droppablePage.AssertElementIsDroppedAttribute("ui-widget-header ui-droppable ui-state-highlight");
+            draggablePage.AssertElementIsMovedCorrectly(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCursor1);
+            draggablePage.AssertElementIsMovedCorrectly(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCursor2);
+            draggablePage.AssertElementIsMovedCorrectly(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCursor3);
         }
 
         [Test]
-        [Property("Interaction", 3)]
-        [Description("Exercise 3 from the lecture - Resize resizable item bith H and W with 100 pixels each")]
+        [Property("Draggable", 4), Property("Draggable test tab Number:", 5)] // Events = tab no 5
+        [Description("Events: Drag element once, check if drag counters increased by 1")]
         [Author("vankatabe")]
-        public void ResizableItem_ResizeSides100PixBigger_ItemSidesAre100PixBigger()
+        public void EventsElement_DragDiagonally_DragCountersIncreasedByOne()
         {
-            var resizablePage = new ResizablePage(this.driver);
-            resizablePage.NavigateTo(resizablePage.URL);
+            var draggablePage = new DraggablePage(this.driver);
+            InteractionPages drag = AccessExcelData.GetInteractionTestsData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = EventsElement_DragDiagonally_DragCountersIncreasedByOne) and use it as a Key in the xlsx file
+            // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
+            draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
+            draggablePage.NavigateTo(draggablePage.URL);
+            // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", draggablePage.TopOfPage);
 
-            resizablePage.IncreaseWidthAndHeightBy(100);
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCounters);
 
-            resizablePage.AssertSizeIncreasedWith(100);
+            // Assert that the element has been actually moved
+            draggablePage.AssertElementIsMoved(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableElementCounters);
+            // Now assert that the counters increased by 1
+            draggablePage.AssertElementIsMovedCounter(draggablePage.DragCounterStart + 1, draggablePage.DraggableElementDragCounterStart);
+            draggablePage.AssertElementIsMovedCounter(draggablePage.DragCounterStop + 1, draggablePage.DraggableElementDragCounterStop);
         }
 
-        [Test] // This test utilises both Data-driven tests and Log functonality (below)
-        [Property("Interaction", 3)]
-        [Description("Exercise 4 from the lecture - Add Logger to SoftUni Test")]
+        [Test]
+        [Property("Draggable", 5), Property("Draggable test tab Number:", 7)] // Events = tab no 7
+        [Description("Draggable + Sortable: Drag Item 2 to bottom of the list, check if Item 2 is at the bottom of the list")]
         [Author("vankatabe")]
-        public void loginSoftUni_ValidCredentials_CorrectLogoDisplayedAfterLogin()
+        public void DraggableAndSortable_DragItem2ToListBottom_Item2IsAtListBottom()
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Url = "http://www.softuni.bg";
-            IWebElement loginButton = driver.FindElement(By.XPath("//nav[@id='header-nav']/div[2]/ul/li[2]/span/a"));
-            loginButton.Click();
+            var draggablePage = new DraggablePage(this.driver);
+            // Get the current test method name and use it as a Key in the xlsx file
+            InteractionPages drag = AccessExcelData.GetInteractionTestsData(TestContext.CurrentContext.Test.Name);
+            // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
+            draggablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Draggable test tab Number:").ToString();
+            draggablePage.NavigateTo(draggablePage.URL);
+            // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", draggablePage.TopOfPage);
 
-            var softUniUser = AccessExcelData.GetTestData("Login");
-            IWebElement userName = driver.FindElement(By.Name("username"));
-            userName.Clear();
-            userName.SendKeys(softUniUser.Username);
-            IWebElement password = driver.FindElement(By.Name("password"));
-            password.Clear();
-            password.SendKeys(softUniUser.Password);
+            draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableSortableElement2);
 
-            IWebElement loginButton2 = driver.FindElement(By.XPath("//form/input[2]"));
-            loginButton2.Click();
-            IWebElement logo = driver.FindElement(By.XPath("//header[@id='page-header']/div/div/div/div/a/img"));
-            Assert.IsTrue(logo.Displayed, "The logo is not displayed properly");
+            // Assert that the element 5 from the list now has text "Item 2"
+            Thread.Sleep(1000);
+            draggablePage.AssertSortableElementIsMovedAtBottom("Item 2");
         }
-
-
     }
 }

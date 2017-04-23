@@ -1,0 +1,11 @@
+Test full name:	SeleniumTestsDemoQaPage.DraggableTests.EventsElement_DragDiagonally_DragCounterIncreasedByDraggedOffset
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  X-offset not correct
+  Expected: 269
+  But was:  270

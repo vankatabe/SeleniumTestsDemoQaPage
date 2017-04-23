@@ -88,7 +88,7 @@ namespace SeleniumTestsDemoQaPage
 
             droppablePage.DragAndDrop();
 
-            droppablePage.AssertElementIsDroppedAttribute("ui-widget-header ui-droppable ui-state-highlight");
+            droppablePage.AssertTargetAttribute("ui-widget-header ui-droppable ui-state-highlight");
         }
 
         [Test]

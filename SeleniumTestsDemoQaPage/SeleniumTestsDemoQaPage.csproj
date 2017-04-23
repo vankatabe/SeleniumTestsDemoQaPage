@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DraggableTests.cs" />
-    <Compile Include="InteractionTests.cs" />
+    <Compile Include="DroppableTests.cs" />
     <Compile Include="Models\AccessExcelData.cs" />
     <Compile Include="Models\InteractionPages.cs" />
     <Compile Include="Models\RegistrationUser.cs" />

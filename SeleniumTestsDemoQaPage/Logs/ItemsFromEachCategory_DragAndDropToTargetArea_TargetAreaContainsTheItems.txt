@@ -1,0 +1,11 @@
+Test full name:	SeleniumTestsDemoQaPage.DroppableTests.ItemsFromEachCategory_DragAndDropToTargetArea_TargetAreaContainsTheItems
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  Expected: String containing "Black Leather"
+  But was:  "Lolcat Shirt
+iPod"

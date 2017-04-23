@@ -1,0 +1,10 @@
+Test full name:	SeleniumTestsDemoQaPage.DroppableTests.RevertWhenDroppedElement_DragAndDropToTarget_TargetAttributesChangedToDroppedAndElementRevertsToItsPreviousPosition
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  Expected: {X=274,Y=349}
+  But was:  {X=527,Y=373}

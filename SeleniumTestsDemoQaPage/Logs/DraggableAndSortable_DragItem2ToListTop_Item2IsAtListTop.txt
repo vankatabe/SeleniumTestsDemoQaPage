@@ -1,0 +1,10 @@
+Test full name:	SeleniumTestsDemoQaPage.DraggableTests.DraggableAndSortable_DragItem2ToListTop_Item2IsAtListTop
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  Expected: String containing "Item 2"
+  But was:  "Item 5"
