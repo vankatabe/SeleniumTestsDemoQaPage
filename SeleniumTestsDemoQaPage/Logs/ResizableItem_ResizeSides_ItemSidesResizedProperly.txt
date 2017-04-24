@@ -6,5 +6,5 @@ Pass count:	0
 
 Result:	Failed
 
-Message:	  Expected: 270
-  But was:  253
+Message:	  Expected: True
+  But was:  False

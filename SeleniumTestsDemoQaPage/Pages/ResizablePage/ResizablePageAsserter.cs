@@ -32,7 +32,7 @@ namespace SeleniumTestsDemoQaPage.Pages.ResizablePage
             */
             // So we use these asserts (Actual dimension is < from the Expected but still > from Expected-20px):
             Assert.IsTrue(page.Width + increaseX - 20 < page.resizeWindow.Size.Width && page.Width + increaseX > page.resizeWindow.Size.Width);
-            Assert.IsTrue(page.Width + increaseY - 20 < page.resizeWindow.Size.Width && page.Width + increaseY > page.resizeWindow.Size.Width);
+            Assert.IsTrue(page.Height + increaseY - 20 < page.resizeWindow.Size.Height && page.Height + increaseY > page.resizeWindow.Size.Height);
         }
 
         public static void AssertResizableSizeSmallerThanContainer(this ResizablePage page, IWebElement resizableElement)

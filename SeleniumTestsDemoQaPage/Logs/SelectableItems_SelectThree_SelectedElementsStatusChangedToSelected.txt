@@ -1,0 +1,9 @@
+Test full name:	SeleniumTestsDemoQaPage.SelectableTests.SelectableItems_SelectThree_SelectedElementsStatusChangedToSelected
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage - Copy\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed:Error
+
+Message:	System.InvalidOperationException : Missing or invalid type argument for pointer action (IndexOutOfBounds)
