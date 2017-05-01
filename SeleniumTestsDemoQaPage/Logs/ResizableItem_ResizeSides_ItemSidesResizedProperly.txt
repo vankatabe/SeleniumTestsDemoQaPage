@@ -1,6 +1,6 @@
 Test full name:	SeleniumTestsDemoQaPage.ResizableTests.ResizableItem_ResizeSides_ItemSidesResizedProperly
 
-Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\QAAutomation-Homework3-v2-vankatabe\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
 
 Pass count:	0
 
