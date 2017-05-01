@@ -18,6 +18,8 @@ namespace SeleniumTestsDemoQaPage.Models
             var con = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;
 		                              Data Source = {0}; 
 		                              Extended Properties=Excel 12.0;", path + filename);
+            // Another way to write it, specifying that the first row of xslx is header and also that mixed-content cell content to be treated appropriately. Still do not put very long strings after row 10 of the xlsx table.
+            // var con2 = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = {0}; Extended Properties='Excel 12.0; HDR = YES; IMEX = 1;';", path + filename);
             return con;
         }
 

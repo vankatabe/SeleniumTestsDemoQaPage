@@ -113,7 +113,7 @@ namespace SeleniumTestsDemoQaPage
 
         [Test]
         [Property("Droppable", 4), Property("Droppable test tab Number:", 4)] // Revert draggable Position = tab no 4
-        [Description("Revert draggable Position: Drag a droppable element and drop it into inner non-greedy target, expected both inner and outer targets status is changed to dropped")]
+        [Description("Revert draggable Position: Drag a revertable droppable element and drop it into target, expected element reverted to initial position and target status is changed to dropped")]
         [Author("vankatabe")]
         public void RevertWhenDroppedElement_DragAndDropToTarget_TargetAttributesChangedToDroppedAndElementRevertsToItsPreviousPosition()
         {
