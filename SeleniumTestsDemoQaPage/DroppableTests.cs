@@ -33,7 +33,7 @@ namespace SeleniumTestsDemoQaPage
             // Add logger for failed tests
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
-                string filename = ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".txt";
+                string filename = AppDomain.CurrentDomain.BaseDirectory.Replace("bin\\Debug\\", string.Empty) + ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".txt";
                 if (File.Exists(filename))
                 {
                     File.Delete(filename);
@@ -46,10 +46,11 @@ namespace SeleniumTestsDemoQaPage
                     + "Message:\t" + TestContext.CurrentContext.Result.Message);
 
                 var screenshot = ((ITakesScreenshot)this.driver).GetScreenshot();
-                screenshot.SaveAsFile(ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg", ScreenshotImageFormat.Jpeg);
+                var filename2 = AppDomain.CurrentDomain.BaseDirectory.Replace("bin\\Debug\\", string.Empty) + ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg";
+                screenshot.SaveAsFile(AppDomain.CurrentDomain.BaseDirectory.Replace("bin\\Debug\\", string.Empty) + ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg", ScreenshotImageFormat.Jpeg);
             }
 
-            //  driver.Quit(); // causes Firefox to crash
+              driver.Quit(); // causes Firefox to crash
         }
 
         [Test]
@@ -130,7 +131,7 @@ namespace SeleniumTestsDemoQaPage
             // Assert target attribute is changed to Dropped - a proof that the droppale element was moved and was there
             droppablePage.AssertTargetAttribute2("ui-widget-header ui-droppable ui-state-highlight", droppablePage.TargetElementTab4);
             // Assert that Droppable element is now at (reverted to) its starting position
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             droppablePage.AssertElementPosition(droppablePage.DroppableRevertableElementTab4);
         }
 

@@ -4,7 +4,6 @@ Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTe
 
 Pass count:	0
 
-Result:	Failed
+Result:	Failed:Error
 
-Message:	  Expected: String containing "Item 2"
-  But was:  "Item 5"
+Message:	OpenQA.Selenium.WebDriverException : Cannot start the driver service on http://localhost:2427/

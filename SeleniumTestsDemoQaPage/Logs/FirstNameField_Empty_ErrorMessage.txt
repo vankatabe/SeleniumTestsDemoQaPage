@@ -6,5 +6,4 @@ Pass count:	0
 
 Result:	Failed:Error
 
-Message:	OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
-  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='pie_register']/li[1]/div/div/span
+Message:	System.InvalidOperationException : Failed to decode response from marionette

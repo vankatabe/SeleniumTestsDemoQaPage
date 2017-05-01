@@ -4,6 +4,8 @@ Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTe
 
 Pass count:	0
 
-Result:	Failed:Error
+Result:	Failed
 
-Message:	System.InvalidOperationException : (409.1499938964844, -314.8500061035156) is out of bounds of viewport width (1280) and height (625) (InvalidElementCoordinates)
+Message:	  X-offset not correct
+  Expected: 384
+  But was:  424
