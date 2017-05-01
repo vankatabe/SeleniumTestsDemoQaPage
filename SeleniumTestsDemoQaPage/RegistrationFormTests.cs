@@ -28,14 +28,12 @@ namespace SeleniumTestsDemoQaPage
             // Add txt logger and screenshot for failed tests
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
-                string filename = ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".txt";
-
-                if (File.Exists(filename))
+                string filenameTxt = AppDomain.CurrentDomain.BaseDirectory.Replace("bin\\Debug\\", string.Empty) + ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".txt";
+                if (File.Exists(filenameTxt))
                 {
-                    File.Delete(filename);
+                    File.Delete(filenameTxt);
                 }
-
-                File.WriteAllText(filename,
+                File.WriteAllText(filenameTxt,
                     "Test full name:\t" + TestContext.CurrentContext.Test.FullName + "\r\n\r\n"
                     + "Work directory:\t" + TestContext.CurrentContext.WorkDirectory + "\r\n\r\n"
                     + "Pass count:\t" + TestContext.CurrentContext.Result.PassCount + "\r\n\r\n"
@@ -43,10 +41,11 @@ namespace SeleniumTestsDemoQaPage
                     + "Message:\t" + TestContext.CurrentContext.Result.Message);
 
                 var screenshot = ((ITakesScreenshot)this.driver).GetScreenshot();
-                screenshot.SaveAsFile(ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg", ScreenshotImageFormat.Jpeg);
+                var filenameJpg = AppDomain.CurrentDomain.BaseDirectory.Replace("bin\\Debug\\", string.Empty) + ConfigurationManager.AppSettings["Logs"] + TestContext.CurrentContext.Test.Name + ".jpg";
+                screenshot.SaveAsFile(filenameJpg, ScreenshotImageFormat.Jpeg);
             }
 
-             driver.Quit(); // causes Firefox to crash
+            driver.Quit(); // causes Firefox to crash
         }
 
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 1),
