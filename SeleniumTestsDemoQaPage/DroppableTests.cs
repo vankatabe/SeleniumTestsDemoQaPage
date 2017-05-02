@@ -131,7 +131,7 @@ namespace SeleniumTestsDemoQaPage
             // Assert target attribute is changed to Dropped - a proof that the droppale element was moved and was there
             droppablePage.AssertTargetAttribute2("ui-widget-header ui-droppable ui-state-highlight", droppablePage.TargetElementTab4);
             // Assert that Droppable element is now at (reverted to) its starting position
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000); - deprecated because I use now a sleeker wait in the AssertElementPosition()
             droppablePage.AssertElementPosition(droppablePage.DroppableRevertableElementTab4);
         }
 
@@ -164,7 +164,6 @@ namespace SeleniumTestsDemoQaPage
             droppablePage.OpenCategory(3);
             Thread.Sleep(1000);
             droppablePage.DragAndDrop2(itemCart3, droppablePage.TargetElementTab5);
-
             Thread.Sleep(1000);
             droppablePage.AssertTargetContains(drop.ItemCat1);
             droppablePage.AssertTargetContains(drop.ItemCat2);

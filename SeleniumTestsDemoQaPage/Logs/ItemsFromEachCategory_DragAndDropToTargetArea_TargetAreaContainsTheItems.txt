@@ -8,4 +8,4 @@ Result:	Failed
 
 Message:	  Expected: String containing "Black Leather"
   But was:  "Lolcat Shirt
-iPod"
+iPad"

@@ -7,4 +7,4 @@ Pass count:	0
 Result:	Failed
 
 Message:	  Expected: {X=274,Y=349}
-  But was:  {X=525,Y=375}
+  But was:  {X=526,Y=374}

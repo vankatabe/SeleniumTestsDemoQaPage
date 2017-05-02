@@ -164,7 +164,7 @@ namespace SeleniumTestsDemoQaPage
             draggablePage.DragObject(int.Parse(drag.HorizontalOffset), int.Parse(drag.VerticalOffset), draggablePage.DraggableSortableElement2);
 
             // Assert that the element 5 from the list now has text "Item 2"
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000); - deprecated because I use now a sleeker wait in the AssertSortableElementIsMovedAtBottom()
             draggablePage.AssertSortableElementIsMovedAtBottom("Item 2");
         }
     }

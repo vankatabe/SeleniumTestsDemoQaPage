@@ -22,6 +22,7 @@ namespace SeleniumTestsDemoQaPage.Pages.DroppablePage
 
         public static void AssertElementPosition(this DroppablePage page, IWebElement element)
         {
+            page.Wait.Until(w => page.Position == element.Location);
             Assert.AreEqual(page.Position, element.Location);
         }
 

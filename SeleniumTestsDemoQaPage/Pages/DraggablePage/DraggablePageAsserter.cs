@@ -29,6 +29,7 @@ namespace SeleniumTestsDemoQaPage.Pages.DraggablePage
 
         public static void AssertSortableElementIsMovedAtBottom(this DraggablePage page, string text)
         {
+            page.Wait.Until(w => text.Contains(page.DraggableSortableElement5.Text));
             StringAssert.Contains(text, page.DraggableSortableElement5.Text);
         }
     }
