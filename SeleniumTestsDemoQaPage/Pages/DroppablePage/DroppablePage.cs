@@ -47,6 +47,15 @@ namespace SeleniumTestsDemoQaPage.Pages.DroppablePage
             drag.Perform();
         }
 
+        public void DragAndDrop3(string element, IWebElement targetElement)
+        {
+            // this.NavigateTo(URL); - just to try if this row would work from here. The real NavigateTo() is in the Test
+            IWebElement droppableElement = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{element}')]")));
+            Actions builder = new Actions(this.Driver);
+            var drag = builder.DragAndDrop(droppableElement, targetElement);
+            drag.Perform();
+        }
+
         public void ObjectLocation(IWebElement element)
         {
             this.position = element.Location;
