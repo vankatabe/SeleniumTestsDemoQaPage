@@ -54,7 +54,7 @@ namespace SeleniumTestsDemoQaPage
                 screenshot.SaveAsFile(filenameJpg, ScreenshotImageFormat.Jpeg);
             }
 
-            //  driver.Quit(); // causes Firefox to crash
+            driver.Quit(); // causes Firefox to crash
         }
 
         [Test]

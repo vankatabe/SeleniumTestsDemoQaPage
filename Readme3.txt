@@ -7,4 +7,6 @@ See the two Excel files in \\SeleniumTestsDemoQaPage\DataDrivenTests - from Poss
 
 Also, I included here the exercises from the lecture PopUp, Dragable, etc. - they are interesting, too.
 
-Don't forget to put your own paths in Config\Environment.config file :)
+Some tests work properly only on Chrome because of the drivers...
+
+If you don't get a screenshot of a failed test, delete the old screenshot from \Logs folder first!

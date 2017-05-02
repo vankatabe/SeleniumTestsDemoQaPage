@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using SeleniumTestsDemoQaPage.Models;
 using SeleniumTestsDemoQaPage.Pages.AutomationPracticePage;
@@ -28,7 +28,7 @@ namespace SeleniumTestsDemoQaPage
         [SetUp]
         public void Init()
         {
-            this.driver = new FirefoxDriver();
+            this.driver = new ChromeDriver();
         }
 
         [TearDown]
@@ -54,7 +54,7 @@ namespace SeleniumTestsDemoQaPage
                 screenshot.SaveAsFile(filenameJpg, ScreenshotImageFormat.Jpeg);
             }
 
-            //  driver.Quit(); // causes Firefox to crash
+            driver.Quit(); // causes Firefox to crash
         }
 
         [Test]
