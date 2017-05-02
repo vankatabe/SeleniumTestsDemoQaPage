@@ -9,6 +9,4 @@ namespace SeleniumTestsDemoQaPage.Pages.SelectablePage
     public partial class SelectablePage
     {
     }
-
-    
 }

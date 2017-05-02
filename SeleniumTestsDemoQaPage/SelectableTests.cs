@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using SeleniumTestsDemoQaPage.Models;
 using SeleniumTestsDemoQaPage.Pages.SelectablePage;
 using System;
@@ -23,7 +23,7 @@ namespace SeleniumTestsDemoQaPage
         [SetUp]
         public void Init()
         {
-            this.driver = new FirefoxDriver();
+            this.driver = new ChromeDriver();
         }
 
         [TearDown]
@@ -68,9 +68,10 @@ namespace SeleniumTestsDemoQaPage
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", selectablePage.TopOfPage);
             Thread.Sleep(1000);
 
-            selectablePage.FindAndSelectSelectableElement3(select);
-            selectablePage.FindAndSelectSelectableElement(select.ItemCat2);
-            selectablePage.FindAndSelectSelectableElement(select.ItemCat3);
+            selectablePage.FindAndSelectSelectableElement4(select, this.driver);
+           // selectablePage.FindAndSelectSelectableElement3(select);
+           // selectablePage.FindAndSelectSelectableElement(select.ItemCat2);
+           // selectablePage.FindAndSelectSelectableElement(select.ItemCat3);
 
 
             //var adsf = selectablePage.FindSelectableElement("Item 1");

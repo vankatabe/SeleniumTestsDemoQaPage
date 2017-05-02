@@ -45,26 +45,39 @@ namespace SeleniumTestsDemoQaPage.Pages.SelectablePage
             builder.KeyUp(Keys.Control).Perform();
         }
 
+        public void FindAndSelectSelectableElement4(InteractionPages select, IWebDriver driver)
+        {
+            IWebElement element1 = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{select.ItemCat1}')]")));
+            IWebElement element2 = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{select.ItemCat2}')]")));
+            Actions builder = new Actions(driver);
+            var action = builder.MoveToElement(element1).Click();
+            action.Perform();
+            builder.KeyDown(Keys.Control);
+            var action2 = builder.MoveToElement(element2).Click();
+            action2.Perform();
+        }
         public void FindAndSelectSelectableElement3(InteractionPages select)
         {
             IWebElement element1 = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{select.ItemCat1}')]")));
             IWebElement element2 = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{select.ItemCat2}')]")));
             Actions builder = new Actions(this.Driver);
-            var action = builder.MoveToElement(element1).Click();
-            action.Perform();
             var action1 = builder.KeyDown(Keys.LeftControl);
             action1.Perform();
+
+            var action = builder.MoveToElement(element1).Click();
+            action.Perform();
+
             var action2 = builder.MoveToElement(element2).Click();
             action2.Perform();
         }
         public void FindAndSelectSelectableElement2(InteractionPages select)
         {
             Actions builder = new Actions(this.Driver);
-           // builder.KeyDown(Keys.Control).Perform();
+            // builder.KeyDown(Keys.Control).Perform();
 
-            
+
             IWebElement element = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{select.ItemCat1}')]")));
-           // element.Click();
+            // element.Click();
             //selector.Perform();
 
             IWebElement element2 = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{select.ItemCat2}')]")));
@@ -76,6 +89,6 @@ namespace SeleniumTestsDemoQaPage.Pages.SelectablePage
             //SelectSelectableElement(element);
         }
 
-       // actionsBuilder.KeyDown(Keys.Control).Click(element).KeyUp(Keys.Control).Perform();
+        // actionsBuilder.KeyDown(Keys.Control).Click(element).KeyUp(Keys.Control).Perform();
     }
 }

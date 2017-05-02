@@ -50,7 +50,7 @@ namespace SeleniumTestsDemoQaPage
                 screenshot.SaveAsFile(filenameJpg, ScreenshotImageFormat.Jpeg);
             }
 
-              driver.Quit(); // causes Firefox to crash
+            driver.Quit(); // causes Firefox to crash
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace SeleniumTestsDemoQaPage
 
             // First Assert that the non-droppable element was really moved (and moved on top of the target)
             droppablePage.AssertElementPosition(droppablePage.TargetElementTab2);
-            // Then Assert that the TArget property has not changed to Dropped
+            // Then Assert that the Target property has not changed to Dropped
             droppablePage.AssertTargetAttribute2("ui-widget-header ui-droppable", droppablePage.TargetElementTab2);
         }
 
@@ -150,20 +150,18 @@ namespace SeleniumTestsDemoQaPage
             // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", droppablePage.TopOfPage);
             // Find by one element from each Category accoeding to Data Driven xlsx
-            IWebElement itemCart1 = droppablePage.FindDroppableElement(drop.ItemCat1);
-            IWebElement itemCart2 = droppablePage.FindDroppableElement(drop.ItemCat2);
-            IWebElement itemCart3 = droppablePage.FindDroppableElement(drop.ItemCat3);
+
 
             // Open the respective category, Drag the elements to cart (to Target)
             droppablePage.OpenCategory(1);
             Thread.Sleep(1000);
-            droppablePage.DragAndDrop2(itemCart1, droppablePage.TargetElementTab5);
+            droppablePage.DragAndDrop3(drop.ItemCat1, droppablePage.TargetElementTab5);
             droppablePage.OpenCategory(2);
             Thread.Sleep(1000);
-            droppablePage.DragAndDrop2(itemCart2, droppablePage.TargetElementTab5);
+            droppablePage.DragAndDrop3(drop.ItemCat2, droppablePage.TargetElementTab5);
             droppablePage.OpenCategory(3);
             Thread.Sleep(1000);
-            droppablePage.DragAndDrop2(itemCart3, droppablePage.TargetElementTab5);
+            droppablePage.DragAndDrop3(drop.ItemCat3, droppablePage.TargetElementTab5);
             Thread.Sleep(1000);
             droppablePage.AssertTargetContains(drop.ItemCat1);
             droppablePage.AssertTargetContains(drop.ItemCat2);
