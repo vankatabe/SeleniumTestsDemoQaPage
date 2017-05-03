@@ -54,9 +54,9 @@ namespace SeleniumTestsDemoQaPage
 
         [Test]
         [Property("Selectable", 1), Property("Selectable test tab Number:", 1)] // Default functionality = tab no 1
-        [Description("Default functionality: Select three elements, expected: elements status changed to 'Selected'")]
+        [Description("Default functionality: Select two elements, expected: elements status changed to 'Selected'")]
         [Author("vankatabe")]
-        public void SelectableItems_SelectThree_SelectedElementsStatusChangedToSelected()
+        public void SelectableItems_SelectTwo_SelectedElementsStatusChangedToSelected()
         {
             var selectablePage = new SelectablePage(this.driver);
             // Get the current test method name (TestContext.CurrentContext.Test.Name = SelectableItems_SelectMoreThanOne_SelectedElementsStatusChangedToSelected) and use it as a Key in the xlsx file
@@ -66,20 +66,11 @@ namespace SeleniumTestsDemoQaPage
             selectablePage.NavigateTo(selectablePage.URL);
             // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", selectablePage.TopOfPage);
-            Thread.Sleep(1000);
 
-            selectablePage.FindAndSelectSelectableElement4(select, this.driver);
-           // selectablePage.FindAndSelectSelectableElement3(select);
-           // selectablePage.FindAndSelectSelectableElement(select.ItemCat2);
-           // selectablePage.FindAndSelectSelectableElement(select.ItemCat3);
+            selectablePage.FindAndSelectSelectableElements(this.driver, selectablePage.SelectableItems[int.Parse(select.Item1)], selectablePage.SelectableItems[int.Parse(select.Item2)]);
 
-
-            //var adsf = selectablePage.FindSelectableElement("Item 1");
-            //selectablePage.SelectSelectableElement(adsf);
-
-            // Exact Assert would not pass because the resized item's dimensions are 17 pixels less than logically expected
-            // See method AssertSizeIncreasedWith2 for details
-            //selectablePage.AssertSizeIncreasedWith2(int.Parse(resize.HorizontalOffset), int.Parse(resize.VerticalOffset));
+            selectablePage.AssertSelectedAttribute("ui-widget-content ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItems[int.Parse(select.Item1)]);
+            selectablePage.AssertSelectedAttribute("ui-widget-content ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItems[int.Parse(select.Item2)]);
         }
     }
 }

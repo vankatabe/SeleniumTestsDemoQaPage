@@ -155,17 +155,17 @@ namespace SeleniumTestsDemoQaPage
             // Open the respective category, Drag the elements to cart (to Target)
             droppablePage.OpenCategory(1);
             Thread.Sleep(1000);
-            droppablePage.DragAndDrop3(drop.ItemCat1, droppablePage.TargetElementTab5);
+            droppablePage.DragAndDrop3(drop.Item1, droppablePage.TargetElementTab5);
             droppablePage.OpenCategory(2);
             Thread.Sleep(1000);
-            droppablePage.DragAndDrop3(drop.ItemCat2, droppablePage.TargetElementTab5);
+            droppablePage.DragAndDrop3(drop.Item2, droppablePage.TargetElementTab5);
             droppablePage.OpenCategory(3);
             Thread.Sleep(1000);
-            droppablePage.DragAndDrop3(drop.ItemCat3, droppablePage.TargetElementTab5);
+            droppablePage.DragAndDrop3(drop.Item3, droppablePage.TargetElementTab5);
             Thread.Sleep(1000);
-            droppablePage.AssertTargetContains(drop.ItemCat1);
-            droppablePage.AssertTargetContains(drop.ItemCat2);
-            droppablePage.AssertTargetContains(drop.ItemCat3);
+            droppablePage.AssertTargetContains(drop.Item1);
+            droppablePage.AssertTargetContains(drop.Item2);
+            droppablePage.AssertTargetContains(drop.Item3);
         }
     }
 }
