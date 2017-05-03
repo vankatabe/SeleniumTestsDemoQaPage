@@ -1,0 +1,12 @@
+Test full name:	SeleniumTestsDemoQaPage.SelectableTests.SelectableItems_SelectTwo_SelectedElementsStatusChangedToSelected
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed
+
+Message:	  Expected string length 56 but was 44. Strings differ at index 44.
+  Expected: "ui-widget-content ui-corner-left ui-selectee ui-selected"
+  But was:  "ui-widget-content ui-corner-left ui-selectee"
+  -------------------------------------------------------^

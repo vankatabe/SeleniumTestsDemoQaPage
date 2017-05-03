@@ -25,7 +25,7 @@ namespace SeleniumTestsDemoQaPage.Pages.SelectablePage
             }
         }
 
-       public void FindAndSelectSelectableElements(IWebDriver driver, IWebElement element1, IWebElement element2)
+       public void SelectSelectableElements(IWebDriver driver, IWebElement element1, IWebElement element2)
         {
             Actions builder = new Actions(driver);
             var action = builder.MoveToElement(element1).Click();
@@ -35,10 +35,18 @@ namespace SeleniumTestsDemoQaPage.Pages.SelectablePage
             action2.Perform();
         }
 
-        public string SelectedAttribute(string elementNumber)
+        public void SelectSelectableElementsByDrag(IWebDriver driver, IWebElement firstItem, IWebElement lastItem)
         {
-            IWebElement element = this.Driver.FindElement(By.XPath(($"//*[contains(text(), '{elementNumber}')]")));
-            return element.GetAttribute("class");
+            Actions builder = new Actions(driver);
+            var action = builder.ClickAndHold(firstItem).Release(lastItem);
+            action.Perform();
+        }
+
+        public void SelectSelectableElement(IWebDriver driver, IWebElement element1)
+        {
+            Actions builder = new Actions(driver);
+            var action = builder.MoveToElement(element1).Click();
+            action.Perform();
         }
     }
 }

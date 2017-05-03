@@ -1,4 +1,4 @@
-Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_DuplicateEmail_ErrorMessage
+Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests.ConfirmPassworField_Empty_ErrorMessage
 
 Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
 
