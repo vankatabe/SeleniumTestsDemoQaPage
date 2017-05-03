@@ -6,5 +6,4 @@ Pass count:	0
 
 Result:	Failed:Error
 
-Message:	OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
-  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='post-49']/div/p
+Message:	OpenQA.Selenium.NoSuchElementException : Unable to locate element: #name_3_firstname

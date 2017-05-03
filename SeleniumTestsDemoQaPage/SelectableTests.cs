@@ -54,32 +54,65 @@ namespace SeleniumTestsDemoQaPage
 
         [Test]
         [Property("Selectable", 1), Property("Selectable test tab Number:", 1)] // Default functionality = tab no 1
-        [Description("Default functionality: Select three elements, expected: elements status changed to 'Selected'")]
+        [Description("Default functionality: Select two non-adjacent elements, expected: elements status changed to 'Selected'")]
         [Author("vankatabe")]
-        public void SelectableItems_SelectThree_SelectedElementsStatusChangedToSelected()
+        public void SelectableItems_SelectTwoNonAdjacent_SelectedElementsStatusChangedToSelected()
         {
             var selectablePage = new SelectablePage(this.driver);
-            // Get the current test method name (TestContext.CurrentContext.Test.Name = SelectableItems_SelectMoreThanOne_SelectedElementsStatusChangedToSelected) and use it as a Key in the xlsx file
+            // Get the current test method name (TestContext.CurrentContext.Test.Name = SelectableItems_SelectTwoNonAdjacent_SelectedElementsStatusChangedToSelected) and use it as a Key in the xlsx file
             InteractionPages select = AccessExcelData.GetInteractionTestsData(TestContext.CurrentContext.Test.Name);
             // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
             selectablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Selectable test tab Number:").ToString();
             selectablePage.NavigateTo(selectablePage.URL);
             // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", selectablePage.TopOfPage);
-            Thread.Sleep(1000);
 
-            selectablePage.FindAndSelectSelectableElement4(select, this.driver);
-           // selectablePage.FindAndSelectSelectableElement3(select);
-           // selectablePage.FindAndSelectSelectableElement(select.ItemCat2);
-           // selectablePage.FindAndSelectSelectableElement(select.ItemCat3);
+            selectablePage.SelectSelectableElements(this.driver, selectablePage.SelectableItems[int.Parse(select.Item1)], selectablePage.SelectableItems[int.Parse(select.Item2)]);
 
+            selectablePage.AssertSelectedAttribute("ui-widget-content ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItems[int.Parse(select.Item1)]);
+            selectablePage.AssertSelectedAttribute("ui-widget-content ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItems[int.Parse(select.Item2)]);
+        }
 
-            //var adsf = selectablePage.FindSelectableElement("Item 1");
-            //selectablePage.SelectSelectableElement(adsf);
+        [Test]
+        [Property("Selectable", 2), Property("Selectable test tab Number:", 2)] // Display as grid = tab no 2
+        [Description("Display as grid: Select all elements by muose click and drag, expected: elements status changed to 'Selected'")]
+        [Author("vankatabe")]
+        public void SelectableItems_SelectAllByMouseDrag_SelectedElementsStatusChangedToSelected()
+        {
+            var selectablePage = new SelectablePage(this.driver);
+            // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
+            selectablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Selectable test tab Number:").ToString();
+            selectablePage.NavigateTo(selectablePage.URL);
+            // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", selectablePage.TopOfPage);
 
-            // Exact Assert would not pass because the resized item's dimensions are 17 pixels less than logically expected
-            // See method AssertSizeIncreasedWith2 for details
-            //selectablePage.AssertSizeIncreasedWith2(int.Parse(resize.HorizontalOffset), int.Parse(resize.VerticalOffset));
+            selectablePage.SelectSelectableElementsByDrag(this.driver, selectablePage.SelectableItemsTab2[0], selectablePage.SelectableItemsTab2[selectablePage.SelectableItemsTab2.Count - 1]);
+
+            for (int i = 0; i < selectablePage.SelectableItemsTab2.Count; i++)
+            {
+                selectablePage.AssertSelectedAttributes("ui-state-default ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItemsTab2[i]);
+            }
+        }
+
+        [Test]
+        [Property("Selectable", 3), Property("Selectable test tab Number:", 3)] // Serialize = tab no 3
+        [Description("Serialize: Select selectable item, expected: item number is displayed correctly")]
+        [Author("vankatabe")]
+        public void SelectableItems_SelectItem_SelectedItemNumberIsDisplayed()
+        {
+            var selectablePage = new SelectablePage(this.driver);
+            // Get the current test method name (TestContext.CurrentContext.Test.Name = SelectableItems_SelectTwoNonAdjacent_SelectedElementsStatusChangedToSelected) and use it as a Key in the xlsx file
+            InteractionPages select = AccessExcelData.GetInteractionTestsData(TestContext.CurrentContext.Test.Name);
+            // Get the tab number (e.g. "Default functionality", Constrain movement") from the test property above and give it to the URL
+            selectablePage.tabNo = TestContext.CurrentContext.Test.Properties.Get("Selectable test tab Number:").ToString();
+            selectablePage.NavigateTo(selectablePage.URL);
+            // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", selectablePage.TopOfPage);
+
+            selectablePage.SelectSelectableElement(this.driver, selectablePage.SelectableItemsTab3[int.Parse(select.Item1)-1]);
+
+            selectablePage.AssertSelectedAttribute("ui-widget-content ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItemsTab3[int.Parse(select.Item1)-1]);
+            selectablePage.AssertSelectedElementNumberIsDisplayed("4", selectablePage.SelectedElementDisplay);
         }
     }
 }
