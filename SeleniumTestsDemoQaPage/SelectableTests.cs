@@ -49,7 +49,7 @@ namespace SeleniumTestsDemoQaPage
                 screenshot.SaveAsFile(filenameJpg, ScreenshotImageFormat.Jpeg);
             }
 
-            //  driver.Quit(); // causes Firefox to crash
+            driver.Quit(); // causes Firefox to crash
         }
 
         [Test]
@@ -109,9 +109,9 @@ namespace SeleniumTestsDemoQaPage
             // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", selectablePage.TopOfPage);
 
-            selectablePage.SelectSelectableElement(this.driver, selectablePage.SelectableItemsTab3[int.Parse(select.Item1)-1]);
+            selectablePage.SelectSelectableElement(this.driver, selectablePage.SelectableItemsTab3[int.Parse(select.Item1) - 1]);
 
-            selectablePage.AssertSelectedAttribute("ui-widget-content ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItemsTab3[int.Parse(select.Item1)-1]);
+            selectablePage.AssertSelectedAttribute("ui-widget-content ui-corner-left ui-selectee ui-selected", selectablePage.SelectableItemsTab3[int.Parse(select.Item1) - 1]);
             selectablePage.AssertSelectedElementNumberIsDisplayed("4", selectablePage.SelectedElementDisplay);
         }
     }

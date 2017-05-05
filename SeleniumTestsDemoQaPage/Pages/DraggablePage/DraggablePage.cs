@@ -33,7 +33,7 @@ namespace SeleniumTestsDemoQaPage.Pages.DraggablePage
 
         public void DragObject(int horizontalOffset, int verticalOffset, IWebElement draggableElement)
         {
-            /* This doesn't do the job to scroll to top of the page:
+            /* This doesn't do the job to scroll to top of the page, at least in Firefox:
               Actions actions = new Actions(this.Driver);
               actions.MoveToElement(draggableElement);
               actions.Perform();

@@ -59,6 +59,9 @@
     <Compile Include="Pages\SelectablePage\SelectablePage.cs" />
     <Compile Include="Pages\SelectablePage\SelectablePageAsserter.cs" />
     <Compile Include="Pages\SelectablePage\SelectablePageMap.cs" />
+    <Compile Include="Pages\SortablePage\SortablePage.cs" />
+    <Compile Include="Pages\SortablePage\SortablePageAsserter.cs" />
+    <Compile Include="Pages\SortablePage\SortablePageMap.cs" />
     <Compile Include="ResizableTests.cs" />
     <Compile Include="DraggableTests.cs" />
     <Compile Include="DroppableTests.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="RegistrationFormTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectableTests.cs" />
+    <Compile Include="SortableTests.cs" />
     <Compile Include="ToolsQaTests.cs" />
   </ItemGroup>
   <ItemGroup>
