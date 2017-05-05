@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,16 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
         {
             // Assert that position of element 2 is lower count (before) element 1's position
             Assert.IsTrue(item2PositionAfter < item1PositionAfter);
+        }
+
+        public static void Column1ElementCountDecreased(this SortablePage page, IWebDriver driver, List<IWebElement> SortableItemsColumn1, int oldCount)
+        {
+            Assert.IsTrue(SortableItemsColumn1.Count == oldCount - 1);
+        }
+
+        public static void Column2ElementCountIncreased(this SortablePage page, IWebDriver driver, List<IWebElement> SortableItemsColumn2, int oldCount)
+        {
+            Assert.IsTrue(SortableItemsColumn2.Count == oldCount + 1);
         }
     }
 }

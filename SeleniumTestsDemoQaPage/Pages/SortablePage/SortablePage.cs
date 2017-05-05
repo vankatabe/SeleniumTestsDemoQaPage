@@ -66,21 +66,27 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
                     item2PositionAfter = i;
                 }
             }
+        }
 
-            /* Useful tries to find which element form the list contains specified text
-             * public void RecheckSortableElements(IWebDriver driver, IWebElement element1, IWebElement element2)
-             {
-             var itemNowOnTop = SortableItemsTab1.FirstOrDefault(stringToCheck => stringToCheck.Text.Contains(element1.Text));
-             // SortableItemsTab1.Contains
-             }
+        /* Useful tries to find which element form the list contains specified text
+         * public void RecheckSortableElements(IWebDriver driver, IWebElement element1, IWebElement element2)
+         {
+         var itemNowOnTop = SortableItemsTab1.FirstOrDefault(stringToCheck => stringToCheck.Text.Contains(element1.Text));
+         // SortableItemsTab1.Contains
+         }
 
-            var itemNowOnTop = SortableItemsTab1.FirstOrDefault(stringToCheck => stringToCheck.Text.Contains(item1));
-            //SortableItemsTab1.Contains
-            var listItemNowOnTop = SortableItemsTab1.Where(stringToCheck => stringToCheck.Text.Contains(item1));
-            var listItemNowOnBottom = SortableItemsTab1.Where(stringToCheck => stringToCheck.Text.Contains(item2));
-            */
+        var itemNowOnTop = SortableItemsTab1.FirstOrDefault(stringToCheck => stringToCheck.Text.Contains(item1));
+        //SortableItemsTab1.Contains
+        var listItemNowOnTop = SortableItemsTab1.Where(stringToCheck => stringToCheck.Text.Contains(item1));
+        var listItemNowOnBottom = SortableItemsTab1.Where(stringToCheck => stringToCheck.Text.Contains(item2));
+        */
 
-
+        public void DragAndDropSortableElement(IWebDriver driver, IWebElement element, IWebElement target)
+        {
+            Actions builder = new Actions(this.Driver);
+            var dragAndDrop = builder.DragAndDrop(element, target);
+            dragAndDrop.Perform();
         }
     }
 }
+
