@@ -1,3 +1,9 @@
-Test name: SeleniumTestsDemoQaPage.ToolsQaTests.HandlePopUp
-Work directory: C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
-Pass count: 0
+Test full name:	SeleniumTestsDemoQaPage.ToolsQaTests.HandlePopUp
+
+Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+
+Pass count:	0
+
+Result:	Failed:Error
+
+Message:	OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='content']/p[4]/button

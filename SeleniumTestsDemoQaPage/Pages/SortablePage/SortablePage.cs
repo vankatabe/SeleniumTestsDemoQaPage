@@ -87,6 +87,15 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
             var dragAndDrop = builder.DragAndDrop(element, target);
             dragAndDrop.Perform();
         }
+
+        public void DragAndDropSortableAfterElement(IWebDriver driver, IWebElement element1, IWebElement element2)
+        {
+            int offsetX = (element2.Location.X - element1.Location.X) + 5;
+            int offsetY = (element2.Location.Y - element1.Location.Y) + 5;
+            Actions builder = new Actions(this.Driver);
+            var dragAndDrop = builder.DragAndDropToOffset(element1, offsetX, offsetY);
+            dragAndDrop.Perform();
+        }
     }
 }
 

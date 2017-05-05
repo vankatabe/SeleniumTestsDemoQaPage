@@ -71,5 +71,21 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
                 return sortableItemsColumn2CountBefore = SortableItemsColumn2.Count;
             }
         }
+
+        public List<IWebElement> SortableElementsTab3
+        {
+            get
+            {
+                return this.Driver.FindElements(By.XPath("//*[@id='sortable_grid']/li")).ToList();
+            }
+        }
+
+        public List<int> SortableElementsTab3ToInt
+        {
+            get
+            {
+                return null;// return List<int>(SortableElementsTab3.ToString());
+            }
+        }
     }
 }

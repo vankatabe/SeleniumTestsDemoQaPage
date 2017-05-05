@@ -7,6 +7,7 @@ using SeleniumTestsDemoQaPage.Pages.SortablePage;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -51,7 +52,7 @@ namespace SeleniumTestsDemoQaPage
                 screenshot.SaveAsFile(filenameJpg, ScreenshotImageFormat.Jpeg);
             }
 
-             driver.Quit(); // causes Firefox to crash
+            driver.Quit(); // causes Firefox to crash
         }
 
         [Test]
@@ -98,7 +99,7 @@ namespace SeleniumTestsDemoQaPage
             var SortableItemsColumn2CountBefore = sortablePage.SortableItemsColumn2.Count;
 
             // Drag desired (given in xlsx file) Sortable Item from column 1 to column 2
-            sortablePage.DragAndDropSortableElement(this.driver, sortablePage.SortableItemsColumn1[int.Parse(sort.Item1)-1], sortablePage.SortableColumn2);
+            sortablePage.DragAndDropSortableElement(this.driver, sortablePage.SortableItemsColumn1[int.Parse(sort.Item1) - 1], sortablePage.SortableColumn2);
 
             sortablePage.Column1ElementCountDecreased(this.driver, sortablePage.SortableItemsColumn1, SortableItemsColumn1CountBefore);
             sortablePage.Column2ElementCountIncreased(this.driver, sortablePage.SortableItemsColumn2, SortableItemsColumn2CountBefore);
@@ -118,12 +119,14 @@ namespace SeleniumTestsDemoQaPage
             sortablePage.NavigateTo(sortablePage.URL);
             // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", sortablePage.TopOfPage);
+            // Get the element 1 and its initial position
+            IWebElement element1 = sortablePage.SortableElementsTab3[int.Parse(sort.Item1) - 1];
+            Point expectedElement1PositionAfter = sortablePage.SortableElementsTab3[int.Parse(sort.Item2) - 1].Location;
 
             // Drag desired (given in xlsx file) Sortable Item 1 after given Sortable Item 2
-        //    sortablePage.DragAndDropSortableElement(this.driver, sortablePage.SortableItemsColumn1[int.Parse(sort.Item1) - 1], sortablePage.SortableColumn2);
-        //
-        //    sortablePage.Column1ElementCountDecreased(this.driver, sortablePage.SortableItemsColumn1, sortablePage.SortableItemsColumn1CountBefore);
-        //    sortablePage.Column2ElementCountIncreased(this.driver, sortablePage.SortableItemsColumn2, sortablePage.SortableItemsColumn2CountBefore);
+            sortablePage.DragAndDropSortableAfterElement(this.driver, sortablePage.SortableElementsTab3[int.Parse(sort.Item1) - 1], sortablePage.SortableElementsTab3[int.Parse(sort.Item2) - 1]);
+
+            sortablePage.AssertElement1MovedToElement2Position(this.driver, expectedElement1PositionAfter, element1);
         }
     }
 }

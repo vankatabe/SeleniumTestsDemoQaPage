@@ -6,4 +6,4 @@ Pass count:	0
 
 Result:	Failed:Error
 
-Message:	System.InvalidOperationException : Expected [object Undefined] undefined to be a string (IndexOutOfBounds)
+Message:	System.InvalidOperationException : Failed to decode response from marionette

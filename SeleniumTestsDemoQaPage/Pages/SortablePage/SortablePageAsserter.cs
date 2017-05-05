@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,11 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
         public static void Column2ElementCountIncreased(this SortablePage page, IWebDriver driver, List<IWebElement> SortableItemsColumn2, int oldCount)
         {
             Assert.IsTrue(SortableItemsColumn2.Count == oldCount + 1);
+        }
+
+        public static void AssertElement1MovedToElement2Position(this SortablePage page, IWebDriver driver, Point expectedElement1PositionAfter, IWebElement element1)
+        {
+            Assert.AreEqual(expectedElement1PositionAfter, element1.Location);
         }
     }
 }

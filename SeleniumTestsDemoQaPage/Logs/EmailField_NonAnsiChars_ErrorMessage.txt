@@ -6,4 +6,4 @@ Pass count:	0
 
 Result:	Failed:Error
 
-Message:	OpenQA.Selenium.NoSuchElementException : Unable to locate element: #name_3_firstname
+Message:	System.InvalidOperationException : Failed to decode response from marionette
