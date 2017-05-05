@@ -9,8 +9,8 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
 {
     public partial class SortablePage
     {
-        public int SortableItemsColumn1CountBefore;
-        public int SortableItemsColumn2CountBefore;
+        private int sortableItemsColumn1CountBefore;
+        private int sortableItemsColumn2CountBefore;
 
 
         public List<IWebElement> SortableItemsTab1
@@ -44,8 +44,14 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
             {
                 return this.Driver.FindElements(By.XPath("//*[@id='sortable1']/li")).ToList();
             }
-            set
-            { SortableItemsColumn1CountBefore = SortableItemsColumn1.Count; }
+        }
+
+        public int SortableItemsColumn1CountBefore1
+        {
+            get
+            {
+                return sortableItemsColumn1CountBefore = SortableItemsColumn1.Count;
+            }
         }
         //child::text()  //book[title/@lang = 'it']   //ul[@id='sortable1']/li[4] child::text()  /bookstore/book/price[text()] 
 
@@ -56,8 +62,14 @@ namespace SeleniumTestsDemoQaPage.Pages.SortablePage
             {
                 return this.Driver.FindElements(By.XPath("//*[@id='sortable2']/li")).ToList();
             }
-            set
-            { SortableItemsColumn2CountBefore = SortableItemsColumn2.Count; }
+        }
+
+        public int SortableItemsColumn2CountBefore2
+        {
+            get
+            {
+                return sortableItemsColumn2CountBefore = SortableItemsColumn2.Count;
+            }
         }
     }
 }

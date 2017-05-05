@@ -10,6 +10,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SeleniumTestsDemoQaPage
@@ -50,7 +51,7 @@ namespace SeleniumTestsDemoQaPage
                 screenshot.SaveAsFile(filenameJpg, ScreenshotImageFormat.Jpeg);
             }
 
-            // driver.Quit(); // causes Firefox to crash
+             driver.Quit(); // causes Firefox to crash
         }
 
         [Test]
@@ -92,12 +93,15 @@ namespace SeleniumTestsDemoQaPage
             sortablePage.NavigateTo(sortablePage.URL);
             // Scroll page Up so the element is into view. Because when Firefox opens the desired page/tab, somehow the page is scrolled down
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", sortablePage.TopOfPage);
+            // Get the initial number of elements in each column
+            var SortableItemsColumn1CountBefore = sortablePage.SortableItemsColumn1.Count;
+            var SortableItemsColumn2CountBefore = sortablePage.SortableItemsColumn2.Count;
 
             // Drag desired (given in xlsx file) Sortable Item from column 1 to column 2
             sortablePage.DragAndDropSortableElement(this.driver, sortablePage.SortableItemsColumn1[int.Parse(sort.Item1)-1], sortablePage.SortableColumn2);
 
-            sortablePage.Column1ElementCountDecreased(this.driver, sortablePage.SortableItemsColumn1, sortablePage.SortableItemsColumn1CountBefore);
-            sortablePage.Column2ElementCountIncreased(this.driver, sortablePage.SortableItemsColumn2, sortablePage.SortableItemsColumn2CountBefore);
+            sortablePage.Column1ElementCountDecreased(this.driver, sortablePage.SortableItemsColumn1, SortableItemsColumn1CountBefore);
+            sortablePage.Column2ElementCountIncreased(this.driver, sortablePage.SortableItemsColumn2, SortableItemsColumn2CountBefore);
         }
 
         [Test]
