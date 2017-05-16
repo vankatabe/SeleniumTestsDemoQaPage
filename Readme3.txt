@@ -10,3 +10,5 @@ Also, I included here the exercises from the lecture PopUp, Dragable, etc. - the
 Some tests work properly only on Chrome because of the drivers...
 
 If you don't get a screenshot of a failed test, delete the old screenshot from \Logs folder first!
+
+If Registration tests don't want to run, check if you have Koala.jpg in the Sample Pictures folder.
