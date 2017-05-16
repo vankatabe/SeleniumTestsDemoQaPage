@@ -10,7 +10,7 @@ namespace SeleniumTestsDemoQaPage.Models
 
         public string LastName { get; set; }
 
-        /* If we want to hardcode the next two values or we want to put somewhere a random-string generating function:
+        /* If we want to hardcode the next two values or we want to put somewhere a random-string generating function (UUID):
         * public List<bool> MaritalStatus { get { return new List<bool>(new bool[] { false, false, true }); } }
         * public List<bool> Hobbies { get { return new List<bool>(new bool[] { false, false, true }); } }
         */
@@ -41,5 +41,8 @@ namespace SeleniumTestsDemoQaPage.Models
 
         public string ConfirmPassword { get; set; }
 
+        public string Asserter { get; set; }
+
+        public string Effect { get; set; }
     }
 }

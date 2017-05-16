@@ -47,18 +47,13 @@ namespace SeleniumTestsDemoQaPage.Pages.RegistrationPage
         private void ClickOnElements(List<IWebElement> elements, string values)
         {
             // parse string 'values' to List<int>
-            List<string> itemsToClick = values.Split(',').ToList();
-            List<int> numsToClick = new List<int>();
-            for (int i = 0; i < itemsToClick.Count; i++)
-            {
-                numsToClick.Add(int.Parse(itemsToClick[i]));
-            }
+            List<int> itemsToClick = values.Split(',').Select(int.Parse).ToList();
 
             // if clickableElement's number exists in the list, clik the Element
             for (int clickableElement = 0; clickableElement < elements.Count; clickableElement++)
             {
                 //* This is more elegant solution but it skips to click on MaritalStatus when there is only one digit in the Excel cell
-                if (numsToClick.Contains(clickableElement))
+                if (itemsToClick.Contains(clickableElement))
                 {
                     /* The next row is needed to "find" the radiobutton and click it. Otherwise it doesn't click on it.
                      * Otherwise, I guess you need to handle it like a drop-down selection - one step to find it and second step to select an option.
@@ -70,9 +65,9 @@ namespace SeleniumTestsDemoQaPage.Pages.RegistrationPage
 
 
                 //Instead of the elegant solution:
-                //     for (int numToClick = 0; numToClick < numsToClick.Count; numToClick++)
+                //     for (int itemToClick = 0; itemToClick < itemsToClick.Count; itemToClick++)
                 //     {
-                //         if (numsToClick[numToClick].Equals(clickableElement))
+                //         if (itemsToClick[itemToClick].Equals(clickableElement))
                 //         {
                 //             elements[clickableElement].Click();
                 //         }
@@ -89,10 +84,18 @@ namespace SeleniumTestsDemoQaPage.Pages.RegistrationPage
         private void Type(IWebElement element, string text)
         {
             element.Clear();
-            if (text != null)
+            if (text == null)
             {
-                element.SendKeys(text);
+                text = String.Empty;
             }
+            element.SendKeys(text);
+
+            // Or:
+            //  element.Clear();
+            //  if (text != null)
+            //  {
+            //      element.SendKeys(text);
+            //  }
         }
     }
 }

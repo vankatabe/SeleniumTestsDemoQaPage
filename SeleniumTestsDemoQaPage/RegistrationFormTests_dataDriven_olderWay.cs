@@ -8,12 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Reflection;
 
 namespace SeleniumTestsDemoQaPage
 {
     [TestFixture]
-    public class RegistrationFormTests
+    public class RegistrationFormTests_dataDriven_olderWay
     {
         private IWebDriver driver;
 
@@ -49,28 +48,19 @@ namespace SeleniumTestsDemoQaPage
             driver.Quit(); // causes Firefox to crash
         }
 
-        // Unified method for filling-in respective user data and addressing the respective Asserter
-        public void RegisterWithTestData(string testName, string errorMessage)
-        {
-            RegistrationPage regPage = new RegistrationPage(this.driver);
-            RegistrationUser user = AccessExcelData.GetTestUserData(testName);
-
-            regPage.NavigateTo(regPage.URL);
-            regPage.FillRegistrationForm(user);
-
-            MethodInfo asserter = typeof(RegistrationPageAssester).GetMethod(user.Asserter);
-            asserter.Invoke(null, new object[] { regPage, errorMessage });
-            // could be also like next row - Effect - from the Effect column in the Excel file. Need to add Effect property in RegistrationUser.cs
-            asserter.Invoke(null, new object[] { regPage, user.Effect });
-        }
-
-        [Test, Property("Priority", 1), Property("Test No. from First iteration", 1)]
-        [Description("Test First Name field with empty string, expected Error message")]
+        [Test, Property("Priority", 1), Property("Test No. from First iteration", 1),
+            Description("Test First Name field with empty string, expected Error message")]
         [Author("vankatabe")]
         // The test doesn't pass because there is a bug in the form - the error mesage disappears once you leave Name fields and go to Marital status
         public void FirstNameField_Empty_ErrorMessage()
         {
-            RegisterWithTestData(TestContext.CurrentContext.Test.Name, "* This field is required"); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
+            RegistrationPage regPage = new RegistrationPage(this.driver);
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
+
+            regPage.NavigateTo(regPage.URL);
+            regPage.FillRegistrationForm(user);
+
+            regPage.AssertNameErrorMessage("* This field is required");
         }
 
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 2),
@@ -78,7 +68,13 @@ namespace SeleniumTestsDemoQaPage
         [Author("vankatabe")] // This test uses the same code/Assert/Error elements like the First name test. Only the input data is adjusted.
         public void LastNameField_Empty_ErrorMessage()
         {
-            RegisterWithTestData(TestContext.CurrentContext.Test.Name, "* This field is required"); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
+            RegistrationPage regPage = new RegistrationPage(this.driver);
+            RegistrationUser user = AccessExcelData.GetTestUserData(TestContext.CurrentContext.Test.Name); // Get the current test method name (TestContext.CurrentContext.Test.Name = FirstNameField_Empty_ErrorMessage) and use it as a Key in the xlsx file
+
+            regPage.NavigateTo(regPage.URL);
+            regPage.FillRegistrationForm(user);
+
+            regPage.AssertNameErrorMessage("* This field is required");
         }
 
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 3),
