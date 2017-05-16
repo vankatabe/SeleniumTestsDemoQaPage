@@ -1,0 +1,809 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug\SeleniumTestsDemoQaPage.dll" total="66" errors="16" failures="4" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2017-05-16" time="13:44:04">
+  <environment nunit-version="3.5.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\vaneto" machine-name="VANETO-PC" user="vaneto" user-domain="vaneto-PC" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug\SeleniumTestsDemoQaPage.dll" executed="True" result="Failure" success="False" time="916.863" asserts="80">
+    <properties>
+      <property name="_PID" value="2788" />
+      <property name="_APPDOMAIN" value="domain-" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+      <stack-trace />
+    </failure>
+    <results>
+      <test-suite type="TestSuite" name="SeleniumTestsDemoQaPage" executed="True" result="Failure" success="False" time="916.842" asserts="80">
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+          <stack-trace />
+        </failure>
+        <results>
+          <test-suite type="TestFixture" name="DraggableTests" executed="True" result="Failure" success="False" time="80.592" asserts="4">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+              <stack-trace />
+            </failure>
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.DraggableTests.ConstrainMovementHorizontal_DragDiagonally_ElementMovedHorizontallyOnly" description="Constrain movement: Drag diagonally a horizontally-only-draggable element, check if element position changed only horizontally" executed="True" result="Success" success="True" time="21.452" asserts="2">
+                <properties>
+                  <property name="Draggable" value="2" />
+                  <property name="Draggable test tab Number:" value="3" />
+                  <property name="Description" value="Constrain movement: Drag diagonally a horizontally-only-draggable element, check if element position changed only horizontally" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DraggableTests.CursorStyle_DragDiagonallyAllElements_ElementsMovedAccordingly" description="Cursor style: Drag all dragables diagonally with same offset, check if elements' positions changed properly" executed="True" result="Failure" success="False" time="26.222" asserts="1">
+                <properties>
+                  <property name="Draggable" value="3" />
+                  <property name="Draggable test tab Number:" value="4" />
+                  <property name="Description" value="Cursor style: Drag all dragables diagonally with same offset, check if elements' positions changed properly" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  X-offset not correct
+  Expected: 504
+  But was:  278
+]]></message>
+                  <stack-trace><![CDATA[at SeleniumTestsDemoQaPage.Pages.DraggablePage.DraggablePageAsserter.AssertElementIsMovedCorrectly(DraggablePage page, Int32 horizontalOffset, Int32 verticalOffset, IWebElement element) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\DraggablePage\DraggablePageAsserter.cs:line 15
+at SeleniumTestsDemoQaPage.DraggableTests.CursorStyle_DragDiagonallyAllElements_ElementsMovedAccordingly() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\DraggableTests.cs:line 121
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DraggableTests.DefaultFunctionality_DragToOppositeCorner_ElementMovedToOppositeCorner" description="Default functionality: Drag a draggable element to the diagonally opposite corner of the containing window, check if element is dragged to the new location" executed="True" result="Error" success="False" time="4.384" asserts="0">
+                <properties>
+                  <property name="Draggable" value="1" />
+                  <property name="Draggable test tab Number:" value="1" />
+                  <property name="Description" value="Default functionality: Drag a draggable element to the diagonally opposite corner of the containing window, check if element is dragged to the new location" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: #draggable]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at SeleniumTestsDemoQaPage.Pages.DraggablePage.DraggablePage.get_DraggableElement() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\DraggablePage\DraggablePageMap.cs:line 16
+   at SeleniumTestsDemoQaPage.DraggableTests.DefaultFunctionality_DragToOppositeCorner_ElementMovedToOppositeCorner() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\DraggableTests.cs:line 74]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DraggableTests.DraggableAndSortable_DragItem2ToListBottom_Item2IsAtListBottom" description="Draggable + Sortable: Drag Item 2 to bottom of the list, check if Item 2 is at the bottom of the list" executed="True" result="Success" success="True" time="23.855" asserts="1">
+                <properties>
+                  <property name="Draggable" value="5" />
+                  <property name="Draggable test tab Number:" value="7" />
+                  <property name="Description" value="Draggable + Sortable: Drag Item 2 to bottom of the list, check if Item 2 is at the bottom of the list" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DraggableTests.EventsElement_DragDiagonally_DragCountersIncreasedByOne" description="Events: Drag element once, check if drag counters increased by 1" executed="True" result="Error" success="False" time="4.656" asserts="0">
+                <properties>
+                  <property name="Draggable" value="4" />
+                  <property name="Draggable test tab Number:" value="5" />
+                  <property name="Description" value="Events: Drag element once, check if drag counters increased by 1" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: #dragevent]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at SeleniumTestsDemoQaPage.Pages.DraggablePage.DraggablePage.get_DraggableElementCounters() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\DraggablePage\DraggablePageMap.cs:line 76
+   at SeleniumTestsDemoQaPage.DraggableTests.EventsElement_DragDiagonally_DragCountersIncreasedByOne() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\DraggableTests.cs:line 140]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="DroppableTests" executed="True" result="Failure" success="False" time="72.032" asserts="5">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+              <stack-trace />
+            </failure>
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.DroppableTests.DefaultFunctionality_DragAndDropToTarget_TargetAttributeChangedToDropped" description="Default functionality: Drag a droppable element and drop it into its target, expected target status is dropped" executed="True" result="Error" success="False" time="4.481" asserts="0">
+                <properties>
+                  <property name="Droppable" value="1" />
+                  <property name="Droppable test tab Number:" value="1" />
+                  <property name="Description" value="Default functionality: Drag a droppable element and drop it into its target, expected target status is dropped" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: #draggableview]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at SeleniumTestsDemoQaPage.Pages.DroppablePage.DroppablePage.get_DroppableElement() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\DroppablePage\DroppablePageMap.cs:line 26
+   at SeleniumTestsDemoQaPage.DroppableTests.DefaultFunctionality_DragAndDropToTarget_TargetAttributeChangedToDropped() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\DroppableTests.cs:line 69]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DroppableTests.DroppableElement_DragAndDropToInnerNonGreedyTarget_BothInnerAndOuterTargetAttributesChangedToDropped" description="Prevent propagation: Drag a droppable element and drop it into inner non-greedy target, expected both inner and outer targets status is changed to dropped" executed="True" result="Error" success="False" time="4.560" asserts="0">
+                <properties>
+                  <property name="Droppable" value="3" />
+                  <property name="Droppable test tab Number:" value="3" />
+                  <property name="Description" value="Prevent propagation: Drag a droppable element and drop it into inner non-greedy target, expected both inner and outer targets status is changed to dropped" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: #draggableprop]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at SeleniumTestsDemoQaPage.Pages.DroppablePage.DroppablePage.get_DroppableElementTab3() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\DroppablePage\DroppablePageMap.cs:line 58
+   at SeleniumTestsDemoQaPage.DroppableTests.DroppableElement_DragAndDropToInnerNonGreedyTarget_BothInnerAndOuterTargetAttributesChangedToDropped() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\DroppableTests.cs:line 109]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DroppableTests.ItemsFromEachCategory_DragAndDropToTargetArea_TargetAreaContainsTheItems" description="Shopping cart demo: Drag one element from each category to Shopping cart, expected that items are added to Shoppng cart" executed="True" result="Success" success="True" time="31.994" asserts="3">
+                <properties>
+                  <property name="Droppable" value="5" />
+                  <property name="Droppable test tab Number:" value="5" />
+                  <property name="Description" value="Shopping cart demo: Drag one element from each category to Shopping cart, expected that items are added to Shoppng cart" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DroppableTests.NonDroppableElement_DragAndDropToTarget_TargetAttributeUnchanged" description="Accept: Drag a non-droppable element and drop it into target, expected target status is non-dropped" executed="True" result="Success" success="True" time="26.070" asserts="2">
+                <properties>
+                  <property name="Droppable" value="2" />
+                  <property name="Droppable test tab Number:" value="2" />
+                  <property name="Description" value="Accept: Drag a non-droppable element and drop it into target, expected target status is non-dropped" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.DroppableTests.RevertWhenDroppedElement_DragAndDropToTarget_TargetAttributesChangedToDroppedAndElementRevertsToItsPreviousPosition" description="Revert draggable Position: Drag a revertable droppable element and drop it into target, expected element reverted to initial position and target status is changed to dropped" executed="True" result="Error" success="False" time="4.916" asserts="0">
+                <properties>
+                  <property name="Droppable" value="4" />
+                  <property name="Droppable test tab Number:" value="4" />
+                  <property name="Description" value="Revert draggable Position: Drag a revertable droppable element and drop it into target, expected element reverted to initial position and target status is changed to dropped" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: #draggablerevert]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at SeleniumTestsDemoQaPage.Pages.DroppablePage.DroppablePage.get_DroppableRevertableElementTab4() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\DroppablePage\DroppablePageMap.cs:line 82
+   at SeleniumTestsDemoQaPage.DroppableTests.RevertWhenDroppedElement_DragAndDropToTarget_TargetAttributesChangedToDroppedAndElementRevertsToItsPreviousPosition() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\DroppableTests.cs:line 128]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="RegistrationFormTests" executed="True" result="Failure" success="False" time="400.961" asserts="18">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+              <stack-trace />
+            </failure>
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.ConfirmPasswordField_NotMatchingPassword_ErrorMessage" description="Confirm Password field not matching Password, expected Error message" executed="True" result="Error" success="False" time="4.354" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="20" />
+                  <property name="Description" value="Confirm Password field not matching Password, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: #name_3_firstname]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_FirstName() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 17
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.FillRegistrationForm(RegistrationUser user) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPage.cs:line 28
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.ConfirmPasswordField_NotMatchingPassword_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 325]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.ConfirmPasswordField_NotMatchingPassword_ErrorMessageInPassStrengthField" description="Confirm Password field not matching Password, expected Error message in Password Strength field" executed="True" result="Success" success="True" time="30.477" asserts="1">
+                <properties>
+                  <property name="Priority" value="2" />
+                  <property name="Test No. from First iteration" value="21" />
+                  <property name="Description" value="Confirm Password field not matching Password, expected Error message in Password Strength field" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.ConfirmPassworField_Empty_ErrorMessage" description="Confirm Password field empty, expected Error message" executed="True" result="Success" success="True" time="27.036" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="19" />
+                  <property name="Description" value="Confirm Password field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_DuplicateEmail_ErrorMessage" description="Test Email field with already used email, expected Error message" executed="True" result="Error" success="False" time="42.188" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="14" />
+                  <property name="Description" value="Test Email field with already used email, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='post-49']/div/p]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Support.UI.DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_ErrorMessageTopOfPage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 223
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertTopOfPageErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 25
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_DuplicateEmail_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 256
+--NoSuchElementException
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_Empty_ErrorMessage" description="Test Email field empty, expected Error message" executed="True" result="Success" success="True" time="27.750" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="10" />
+                  <property name="Description" value="Test Email field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_InvalidEmailAddressFormat_ErrorMessage" description="Test Email field with invalid email string format, expected Error message" executed="True" result="Success" success="True" time="27.477" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="11" />
+                  <property name="Description" value="Test Email field with invalid email string format, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_NonAnsiChars_ErrorMessage" description="Test Email field with non-ANSI characters, expected Error message" executed="True" result="Error" success="False" time="32.918" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="13" />
+                  <property name="Description" value="Test Email field with non-ANSI characters, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='post-49']/div/p]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Support.UI.DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_ErrorMessageTopOfPage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 223
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertTopOfPageErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 25
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_NonAnsiChars_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 240
+--NoSuchElementException
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.EmailField_NotAllowedCharacters_ErrorMessage" description="Test Email field with not allowed ANSI characters, expected Error message" executed="True" result="Success" success="True" time="8.929" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="12" />
+                  <property name="Description" value="Test Email field with not allowed ANSI characters, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.FirstNameField_Empty_ErrorMessage" description="Test First Name field with empty string, expected Error message" executed="True" result="Error" success="False" time="32.142" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="1" />
+                  <property name="Description" value="Test First Name field with empty string, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.Reflection.TargetInvocationException : Exception has been thrown by the target of an invocation.
+  ----> OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='pie_register']/li[1]/div/div/span]]></message>
+                  <stack-trace><![CDATA[   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.RegisterWithTestData(String testName, String errorMessage) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 63
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.FirstNameField_Empty_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 75
+--WebDriverTimeoutException
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_ErrorMessageForName() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 177
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertNameErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 10
+--NoSuchElementException
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.FirstNameLastNameField_Empty_ErrorMessage" description="Test First Name and Last Name fields with empty string, expected Error message" executed="True" result="Success" success="True" time="11.143" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="3" />
+                  <property name="Description" value="Test First Name and Last Name fields with empty string, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.HobbyCheckboxes_Unchecked_ErrorMessage" description="Test Hobby checkboxes unchecked, expected Error message" executed="True" result="Error" success="False" time="11.199" asserts="0">
+                <properties>
+                  <property name="Priority" value="4" />
+                  <property name="Test No. from First iteration" value="4" />
+                  <property name="Description" value="Test Hobby checkboxes unchecked, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                  <stack-trace><![CDATA[   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.ClickOnElements(List`1 elements, String values) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPage.cs:line 50
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.FillRegistrationForm(RegistrationUser user) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPage.cs:line 31
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.HobbyCheckboxes_Unchecked_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 110]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.LastNameField_Empty_ErrorMessage" description="Test Last Name field with empty string, expected Error message" executed="True" result="Success" success="True" time="8.844" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="2" />
+                  <property name="Description" value="Test Last Name field with empty string, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.PassworField_Empty_ErrorMessage" description="Password field empty, expected Error message" executed="True" result="Success" success="True" time="8.115" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="17" />
+                  <property name="Description" value="Password field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.PassworField_TooShortPassword_ErrorMessage" description="Password field with less than 8 characters , expected Error message" executed="True" result="Success" success="True" time="7.871" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="18" />
+                  <property name="Description" value="Password field with less than 8 characters , expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.PictureField_InvalidFileFormat_ErrorMessage" description="Test Picture field with invalid file format, expected Error message" executed="True" result="Success" success="True" time="8.161" asserts="1">
+                <properties>
+                  <property name="Priority" value="4" />
+                  <property name="Test No. from First iteration" value="15" />
+                  <property name="Description" value="Test Picture field with invalid file format, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.TelephoneNumberField_Empty_ErrorMessage" description="Test Telephone number field empty, expected Error message" executed="True" result="Success" success="True" time="9.850" asserts="1">
+                <properties>
+                  <property name="Priority" value="3" />
+                  <property name="Test No. from First iteration" value="5" />
+                  <property name="Description" value="Test Telephone number field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.TelephoneNumberField_NonNumericalCharacters_ErrorMessage" description="Test Telephone number field - input is not numerical, expected Error message" executed="True" result="Success" success="True" time="8.227" asserts="1">
+                <properties>
+                  <property name="Priority" value="3" />
+                  <property name="Test No. from First iteration" value="7" />
+                  <property name="Description" value="Test Telephone number field - input is not numerical, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.TelephoneNumberField_TooShortNumber_ErrorMessage" description="Test Telephone number field - input is between 1 and 9 digits length, expected Error message" executed="True" result="Success" success="True" time="9.910" asserts="1">
+                <properties>
+                  <property name="Priority" value="3" />
+                  <property name="Test No. from First iteration" value="6" />
+                  <property name="Description" value="Test Telephone number field - input is between 1 and 9 digits length, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.UsernameField_DuplicateUsername_ErrorMessage" description="Test Username already registered username, expected Error message" executed="True" result="Error" success="False" time="39.411" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="9" />
+                  <property name="Description" value="Test Username already registered username, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='post-49']/div/p]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Support.UI.DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_ErrorMessageTopOfPage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 223
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertTopOfPageErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 25
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.UsernameField_DuplicateUsername_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 183
+--NoSuchElementException
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.UsernameField_Empty_ErrorMessage" description="Test Username field empty, expected Error message" executed="True" result="Success" success="True" time="7.972" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="8" />
+                  <property name="Description" value="Test Username field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests.UsernameFieldAndEmailField_DuplicateEmailAndUsername_ErrorMessages" description="Test Username field with already used email and Email field with already used username expected two Error messages" executed="True" result="Error" success="False" time="36.942" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="25" />
+                  <property name="Description" value="Test Username field with already used email and Email field with already used username expected two Error messages" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='post-49']/div/p]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Support.UI.DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_ErrorMessageTopOfPage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 223
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertTopOfPageErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 25
+   at SeleniumTestsDemoQaPage.RegistrationFormTests.UsernameFieldAndEmailField_DuplicateEmailAndUsername_ErrorMessages() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests.cs:line 356
+--NoSuchElementException
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="RegistrationFormTests_dataDriven_olderWay" executed="True" result="Failure" success="False" time="258.335" asserts="22">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+              <stack-trace />
+            </failure>
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.ConfirmPasswordField_NotMatchingPassword_ErrorMessage" description="Confirm Password field not matching Password, expected Error message" executed="True" result="Success" success="True" time="8.850" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="20" />
+                  <property name="Description" value="Confirm Password field not matching Password, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.ConfirmPasswordField_NotMatchingPassword_ErrorMessageInPassStrengthField" description="Confirm Password field not matching Password, expected Error message in Password Strength field" executed="True" result="Success" success="True" time="9.832" asserts="1">
+                <properties>
+                  <property name="Priority" value="2" />
+                  <property name="Test No. from First iteration" value="21" />
+                  <property name="Description" value="Confirm Password field not matching Password, expected Error message in Password Strength field" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.ConfirmPassworField_Empty_ErrorMessage" description="Confirm Password field empty, expected Error message" executed="True" result="Success" success="True" time="7.763" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="19" />
+                  <property name="Description" value="Confirm Password field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.EmailField_DuplicateEmail_ErrorMessage" description="Test Email field with already used email, expected Error message" executed="True" result="Error" success="False" time="28.792" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="14" />
+                  <property name="Description" value="Test Email field with already used email, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='post-49']/div/p]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Support.UI.DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_ErrorMessageTopOfPage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 223
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertTopOfPageErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 25
+   at SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.EmailField_DuplicateEmail_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests_dataDriven_olderWay.cs:line 249
+--NoSuchElementException
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.EmailField_Empty_ErrorMessage" description="Test Email field empty, expected Error message" executed="True" result="Success" success="True" time="9.082" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="10" />
+                  <property name="Description" value="Test Email field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.EmailField_InvalidEmailAddressFormat_ErrorMessage" description="Test Email field with invalid email string format, expected Error message" executed="True" result="Success" success="True" time="14.740" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="11" />
+                  <property name="Description" value="Test Email field with invalid email string format, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.EmailField_NonAnsiChars_ErrorMessage" description="Test Email field with non-ANSI characters, expected Error message" executed="True" result="Success" success="True" time="13.738" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="13" />
+                  <property name="Description" value="Test Email field with non-ANSI characters, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.EmailField_NotAllowedCharacters_ErrorMessage" description="Test Email field with not allowed ANSI characters, expected Error message" executed="True" result="Success" success="True" time="8.412" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="12" />
+                  <property name="Description" value="Test Email field with not allowed ANSI characters, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.FirstNameField_Empty_ErrorMessage" description="Test First Name field with empty string, expected Error message" executed="True" result="Error" success="False" time="29.095" asserts="0">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="1" />
+                  <property name="Description" value="Test First Name field with empty string, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='pie_register']/li[1]/div/div/span]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Support.UI.DefaultWait`1.ThrowTimeoutException(String exceptionMessage, Exception lastException)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.get_ErrorMessageForName() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageMap.cs:line 177
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertNameErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 10
+   at SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.FirstNameField_Empty_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests_dataDriven_olderWay.cs:line 63
+--NoSuchElementException
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Support.UI.DefaultWait`1.Until[TResult](Func`2 condition)]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.FirstNameLastNameField_Empty_ErrorMessage" description="Test First Name and Last Name fields with empty string, expected Error message" executed="True" result="Success" success="True" time="12.757" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="3" />
+                  <property name="Description" value="Test First Name and Last Name fields with empty string, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.HobbyCheckboxes_Unchecked_ErrorMessage" description="Test Hobby checkboxes unchecked, expected Error message" executed="True" result="Error" success="False" time="13.604" asserts="0">
+                <properties>
+                  <property name="Priority" value="4" />
+                  <property name="Test No. from First iteration" value="4" />
+                  <property name="Description" value="Test Hobby checkboxes unchecked, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                  <stack-trace><![CDATA[   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.ClickOnElements(List`1 elements, String values) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPage.cs:line 50
+   at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPage.FillRegistrationForm(RegistrationUser user) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPage.cs:line 31
+   at SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.HobbyCheckboxes_Unchecked_ErrorMessage() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests_dataDriven_olderWay.cs:line 103]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.LastNameField_Empty_ErrorMessage" description="Test Last Name field with empty string, expected Error message" executed="True" result="Success" success="True" time="12.506" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="2" />
+                  <property name="Description" value="Test Last Name field with empty string, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.PassworField_Empty_ErrorMessage" description="Password field empty, expected Error message" executed="True" result="Success" success="True" time="7.864" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="17" />
+                  <property name="Description" value="Password field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.PassworField_TooShortPassword_ErrorMessage" description="Password field with less than 8 characters , expected Error message" executed="True" result="Success" success="True" time="9.351" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="18" />
+                  <property name="Description" value="Password field with less than 8 characters , expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.PictureField_InvalidFileFormat_ErrorMessage" description="Test Picture field with invalid file format, expected Error message" executed="True" result="Success" success="True" time="10.925" asserts="1">
+                <properties>
+                  <property name="Priority" value="4" />
+                  <property name="Test No. from First iteration" value="15" />
+                  <property name="Description" value="Test Picture field with invalid file format, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.TelephoneNumberField_Empty_ErrorMessage" description="Test Telephone number field empty, expected Error message" executed="True" result="Success" success="True" time="7.939" asserts="1">
+                <properties>
+                  <property name="Priority" value="3" />
+                  <property name="Test No. from First iteration" value="5" />
+                  <property name="Description" value="Test Telephone number field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.TelephoneNumberField_NonNumericalCharacters_ErrorMessage" description="Test Telephone number field - input is not numerical, expected Error message" executed="True" result="Success" success="True" time="7.993" asserts="1">
+                <properties>
+                  <property name="Priority" value="3" />
+                  <property name="Test No. from First iteration" value="7" />
+                  <property name="Description" value="Test Telephone number field - input is not numerical, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.TelephoneNumberField_TooShortNumber_ErrorMessage" description="Test Telephone number field - input is between 1 and 9 digits length, expected Error message" executed="True" result="Success" success="True" time="8.604" asserts="1">
+                <properties>
+                  <property name="Priority" value="3" />
+                  <property name="Test No. from First iteration" value="6" />
+                  <property name="Description" value="Test Telephone number field - input is between 1 and 9 digits length, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.UsernameField_DuplicateUsername_ErrorMessage" description="Test Username already registered username, expected Error message" executed="True" result="Success" success="True" time="13.695" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="9" />
+                  <property name="Description" value="Test Username already registered username, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.UsernameField_Empty_ErrorMessage" description="Test Username field empty, expected Error message" executed="True" result="Success" success="True" time="9.804" asserts="1">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="8" />
+                  <property name="Description" value="Test Username field empty, expected Error message" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.UsernameFieldAndEmailField_DuplicateEmailAndUsername_ErrorMessages" description="Test Username field with already used email and Email field with already used username expected two Error messages" executed="True" result="Failure" success="False" time="12.944" asserts="2">
+                <properties>
+                  <property name="Priority" value="1" />
+                  <property name="Test No. from First iteration" value="25" />
+                  <property name="Description" value="Test Username field with already used email and Email field with already used username expected two Error messages" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: String containing "E-mail address already exists"
+  But was:  "Error: Username already exists"
+]]></message>
+                  <stack-trace><![CDATA[at NUnit.Framework.StringAssert.Contains(String expected, String actual)
+at SeleniumTestsDemoQaPage.Pages.RegistrationPage.RegistrationPageAssester.AssertTopOfPageErrorMessage(RegistrationPage page, String text) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\RegistrationPage\RegistrationPageAssester.cs:line 25
+at SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.UsernameFieldAndEmailField_DuplicateEmailAndUsername_ErrorMessages() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\RegistrationFormTests_dataDriven_olderWay.cs:line 350
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="ResizableTests" executed="True" result="Success" success="True" time="15.905" asserts="6">
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.ResizableTests.ResizableConstrainedItem_ResizeSides_ItemResizeConstrainedByContainer" description="Constrain resize area: Resize resizable item with some positive pixels (more than the dimensions of the Constraint element) each, expected: item resize is constrained by the Constrain Element's dimensions" executed="True" result="Success" success="True" time="5.081" asserts="2">
+                <properties>
+                  <property name="Resizable" value="2" />
+                  <property name="Resizable test tab Number:" value="3" />
+                  <property name="Description" value="Constrain resize area: Resize resizable item with some positive pixels (more than the dimensions of the Constraint element) each, expected: item resize is constrained by the Constrain Element's dimensions" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.ResizableTests.ResizableConstrainedItem_ResizeSidesMoreThanConstraints_ItemResizeConstrainedByConstraints" description="Max/Min size: Resize each side of the resizable element with big positive value (more than the value of the resize constraint), expected: item resize cannot be more than the constraints values" executed="True" result="Success" success="True" time="5.646" asserts="2">
+                <properties>
+                  <property name="Resizable" value="3" />
+                  <property name="Resizable test tab Number:" value="5" />
+                  <property name="Description" value="Max/Min size: Resize each side of the resizable element with big positive value (more than the value of the resize constraint), expected: item resize cannot be more than the constraints values" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.ResizableTests.ResizableItem_ResizeSides_ItemSidesResizedProperly" description="Default functionality: Resize resizable item with H and W with some positive pixels each, expected: item is resized properly" executed="True" result="Success" success="True" time="5.172" asserts="2">
+                <properties>
+                  <property name="Resizable" value="1" />
+                  <property name="Resizable test tab Number:" value="1" />
+                  <property name="Description" value="Default functionality: Resize resizable item with H and W with some positive pixels each, expected: item is resized properly" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="SelectableTests" executed="True" result="Success" success="True" time="16.896" asserts="16">
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.SelectableTests.SelectableItems_SelectAllByMouseDrag_SelectedElementsStatusChangedToSelected" description="Display as grid: Select all elements by muose click and drag, expected: elements status changed to 'Selected'" executed="True" result="Success" success="True" time="5.165" asserts="12">
+                <properties>
+                  <property name="Selectable" value="2" />
+                  <property name="Selectable test tab Number:" value="2" />
+                  <property name="Description" value="Display as grid: Select all elements by muose click and drag, expected: elements status changed to 'Selected'" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.SelectableTests.SelectableItems_SelectItem_SelectedItemNumberIsDisplayed" description="Serialize: Select selectable item, expected: item number is displayed correctly" executed="True" result="Success" success="True" time="6.230" asserts="2">
+                <properties>
+                  <property name="Selectable" value="3" />
+                  <property name="Selectable test tab Number:" value="3" />
+                  <property name="Description" value="Serialize: Select selectable item, expected: item number is displayed correctly" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.SelectableTests.SelectableItems_SelectTwoNonAdjacent_SelectedElementsStatusChangedToSelected" description="Default functionality: Select two non-adjacent elements, expected: elements status changed to 'Selected'" executed="True" result="Success" success="True" time="5.494" asserts="2">
+                <properties>
+                  <property name="Selectable" value="1" />
+                  <property name="Selectable test tab Number:" value="1" />
+                  <property name="Description" value="Default functionality: Select two non-adjacent elements, expected: elements status changed to 'Selected'" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="SortableTests" executed="True" result="Success" success="True" time="34.807" asserts="5">
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.SortableTests.ConnectLists_DragOneSortableItemFromFirstListToSecondList_NumberOfItemsChangedAccordingly" description="Connect Lists: Drag one sortable element from first list to second list, expected: number of sortable elements in columns changed accordingly" executed="True" result="Success" success="True" time="8.045" asserts="2">
+                <properties>
+                  <property name="Sortable" value="2" />
+                  <property name="Sortable test tab Number:" value="2" />
+                  <property name="Description" value="Connect Lists: Drag one sortable element from first list to second list, expected: number of sortable elements in columns changed accordingly" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.SortableTests.DefaultFunctionality_DragLastItemToListTop_LastItemIsAtListTop" description="Default functionality: Drag the last sortable element to the top of the list, expected: last item is at the top of the list" executed="True" result="Success" success="True" time="11.442" asserts="2">
+                <properties>
+                  <property name="Sortable" value="1" />
+                  <property name="Sortable test tab Number:" value="1" />
+                  <property name="Description" value="Default functionality: Drag the last sortable element to the top of the list, expected: last item is at the top of the list" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.SortableTests.Grid_DragOneSortableItemAfterAnother_OrderOfNumberedSortableItemsChangedAccordingly" description="Display as grid: Drag one sortable element to a position after another element, expected: order of numbered sortable elements changed accordingly" executed="True" result="Success" success="True" time="15.314" asserts="1">
+                <properties>
+                  <property name="Sortable" value="3" />
+                  <property name="Sortable test tab Number:" value="3" />
+                  <property name="Description" value="Display as grid: Drag one sortable element to a position after another element, expected: order of numbered sortable elements changed accordingly" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="ToolsQaTests" executed="True" result="Failure" success="False" time="37.296" asserts="4">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+              <stack-trace />
+            </failure>
+            <results>
+              <test-case name="SeleniumTestsDemoQaPage.ToolsQaTests.DroppableElement_DragAndDropToTarget_TargetAttributeChangedToDropped" description="Exercise 2 from the lecture - Drag a droppable element and drop it into its target " executed="True" result="Success" success="True" time="10.033" asserts="1">
+                <properties>
+                  <property name="ToolsQa" value="3" />
+                  <property name="Description" value="Exercise 2 from the lecture - Drag a droppable element and drop it into its target " />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.ToolsQaTests.HandlePopUp" description="Exercise 1 from the lecture - Open ToolsQa_switch_windows_practice, click on New Tab button, assert the ToolsQaHOmePage is open, then close the first tab and assert Driver handles only one window/tab" executed="True" result="Error" success="False" time="4.257" asserts="0">
+                <properties>
+                  <property name="ToolsQa" value="3" />
+                  <property name="Description" value="Exercise 1 from the lecture - Open ToolsQa_switch_windows_practice, click on New Tab button, assert the ToolsQaHOmePage is open, then close the first tab and assert Driver handles only one window/tab" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='content']/p[4]/button]]></message>
+                  <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at SeleniumTestsDemoQaPage.Pages.AutomationPracticePage.AutomationPage.get_NewTabButton() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\AutomationPracticePage\AutomationPageMap.cs:line 16
+   at SeleniumTestsDemoQaPage.ToolsQaTests.HandlePopUp() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\ToolsQaTests.cs:line 68]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.ToolsQaTests.loginSoftUni_ValidCredentials_CorrectLogoDisplayedAfterLogin" description="Exercise 4 from the lecture - Add Logger to SoftUni Test" executed="True" result="Success" success="True" time="8.178" asserts="1">
+                <properties>
+                  <property name="ToolsQa" value="3" />
+                  <property name="Description" value="Exercise 4 from the lecture - Add Logger to SoftUni Test" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.ToolsQaTests.ResizableItem_ResizeSides100PixBigger_ItemSidesAre100PixBigger" description="Exercise 3 from the lecture - Resize resizable item with H and W with 100 pixels each" executed="True" result="Failure" success="False" time="7.572" asserts="1">
+                <properties>
+                  <property name="ToolsQa" value="3" />
+                  <property name="Description" value="Exercise 3 from the lecture - Resize resizable item with H and W with 100 pixels each" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: 250
+  But was:  233
+]]></message>
+                  <stack-trace><![CDATA[at SeleniumTestsDemoQaPage.Pages.ResizablePage.ResizablePageAsserter.AssertSizeIncreasedWith(ResizablePage page, Int32 increase) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\ResizablePage\ResizablePageAsserter.cs:line 17
+at SeleniumTestsDemoQaPage.ToolsQaTests.ResizableItem_ResizeSides100PixBigger_ItemSidesAre100PixBigger() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\ToolsQaTests.cs:line 106
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="SeleniumTestsDemoQaPage.ToolsQaTests.ResizableItem_ResizeWidth100PixBigger_ItemWidthIs100PixBigger" description="Exercise 3 from the lecture another try - Resize resizable item width with 100 pixels" executed="True" result="Failure" success="False" time="7.244" asserts="1">
+                <properties>
+                  <property name="ToolsQa" value="3" />
+                  <property name="Description" value="Exercise 3 from the lecture another try - Resize resizable item width with 100 pixels" />
+                  <property name="Author" value="vankatabe" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: 250
+  But was:  233
+]]></message>
+                  <stack-trace><![CDATA[at SeleniumTestsDemoQaPage.Pages.ResizablePage.ResizablePageAsserter.AssertWidthIncreasedWith(ResizablePage page, Int32 increase) in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\Pages\ResizablePage\ResizablePageAsserter.cs:line 24
+at SeleniumTestsDemoQaPage.ToolsQaTests.ResizableItem_ResizeWidth100PixBigger_ItemWidthIs100PixBigger() in C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\ToolsQaTests.cs:line 120
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

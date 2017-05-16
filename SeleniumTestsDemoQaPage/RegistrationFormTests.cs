@@ -2,6 +2,7 @@
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using SeleniumTestsDemoQaPage.Attributes;
 using SeleniumTestsDemoQaPage.Models;
 using SeleniumTestsDemoQaPage.Pages.RegistrationPage;
 using System;
@@ -67,6 +68,7 @@ namespace SeleniumTestsDemoQaPage
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 1)]
         [Description("Test First Name field with empty string, expected Error message")]
         [Author("vankatabe")]
+        [LogResultToFileAttribute]
         // The test doesn't pass because there is a bug in the form - the error mesage disappears once you leave Name fields and go to Marital status
         public void FirstNameField_Empty_ErrorMessage()
         {
@@ -84,6 +86,7 @@ namespace SeleniumTestsDemoQaPage
         [Test, Property("Priority", 1), Property("Test No. from First iteration", 3),
             Description("Test First Name and Last Name fields with empty string, expected Error message")]
         [Author("vankatabe")] // This test uses the same code/Assert/Error elements like the First name test. Only the input data is adjusted.
+        [LogResultToFileAttribute]
         public void FirstNameLastNameField_Empty_ErrorMessage()
         {
             RegistrationPage regPage = new RegistrationPage(this.driver);
