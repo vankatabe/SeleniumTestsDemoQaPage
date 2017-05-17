@@ -61,12 +61,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\LogResultToFileAttribute.cs" />
+    <Compile Include="FirstTrySpecFlowSteps.cs" />
     <Compile Include="Pages\SelectablePage\SelectablePage.cs" />
     <Compile Include="Pages\SelectablePage\SelectablePageAsserter.cs" />
     <Compile Include="Pages\SelectablePage\SelectablePageMap.cs" />
     <Compile Include="Pages\SortablePage\SortablePage.cs" />
     <Compile Include="Pages\SortablePage\SortablePageAsserter.cs" />
     <Compile Include="Pages\SortablePage\SortablePageMap.cs" />
+    <Compile Include="RegistrationDemoQASteps.cs" />
     <Compile Include="RegistrationFormTests.cs" />
     <Compile Include="RegistrationFormTests_dataDriven_olderWay.cs" />
     <Compile Include="ResizableTests.cs" />
@@ -100,6 +102,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectableTests.cs" />
     <Compile Include="SortableTests.cs" />
+    <Compile Include="SpecFlowTests\FirstTrySpecFlow.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FirstTrySpecFlow.feature</DependentUpon>
+    </Compile>
+    <Compile Include="SpecFlowTests\RegistrationDemoQA.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RegistrationDemoQA.feature</DependentUpon>
+    </Compile>
     <Compile Include="ToolsQaTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +125,14 @@
     <None Include="DataDrivenTests\Possible negative tests.xls" />
     <None Include="DataDrivenTests\UserData.xlsx" />
     <None Include="packages.config" />
+    <None Include="SpecFlowTests\FirstTrySpecFlow.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FirstTrySpecFlow.feature.cs</LastGenOutput>
+    </None>
+    <None Include="SpecFlowTests\RegistrationDemoQA.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RegistrationDemoQA.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
