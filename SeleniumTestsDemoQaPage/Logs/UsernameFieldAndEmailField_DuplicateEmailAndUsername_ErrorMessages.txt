@@ -1,9 +1,10 @@
-Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests.UsernameFieldAndEmailField_DuplicateEmailAndUsername_ErrorMessages
+Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.UsernameFieldAndEmailField_DuplicateEmailAndUsername_ErrorMessages
 
-Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+Work directory:	C:\Users\vaneto
 
 Pass count:	0
 
-Result:	Failed:Error
+Result:	Failed
 
-Message:	System.InvalidOperationException : Failed to decode response from marionette
+Message:	  Expected: String containing "E-mail address already exists"
+  But was:  "Error: Username already exists"

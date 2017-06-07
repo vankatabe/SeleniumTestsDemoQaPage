@@ -1,0 +1,9 @@
+Test full name:	SeleniumTestsDemoQaPage.DraggableTests.EventsElement_DragDiagonally_DragCountersIncreasedByOne
+
+Work directory:	C:\Users\vaneto
+
+Pass count:	0
+
+Result:	Failed:Error
+
+Message:	OpenQA.Selenium.NoSuchElementException : Unable to locate element: #dragevent

@@ -1,10 +1,9 @@
 Test full name:	SeleniumTestsDemoQaPage.DroppableTests.RevertWhenDroppedElement_DragAndDropToTarget_TargetAttributesChangedToDroppedAndElementRevertsToItsPreviousPosition
 
-Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+Work directory:	C:\Users\vaneto
 
 Pass count:	0
 
-Result:	Failed
+Result:	Failed:Error
 
-Message:	  Expected: {X=274,Y=349}
-  But was:  {X=526,Y=374}
+Message:	OpenQA.Selenium.NoSuchElementException : Unable to locate element: #draggablerevert

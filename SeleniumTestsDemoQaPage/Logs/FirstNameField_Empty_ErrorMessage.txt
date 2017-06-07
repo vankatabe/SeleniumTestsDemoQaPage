@@ -1,9 +1,10 @@
-Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests.FirstNameField_Empty_ErrorMessage
+Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.FirstNameField_Empty_ErrorMessage
 
-Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+Work directory:	C:\Users\vaneto
 
 Pass count:	0
 
 Result:	Failed:Error
 
-Message:	System.InvalidOperationException : Failed to decode response from marionette
+Message:	OpenQA.Selenium.WebDriverTimeoutException : Timed out after 20 seconds
+  ----> OpenQA.Selenium.NoSuchElementException : Unable to locate element: //*[@id='pie_register']/li[1]/div/div/span

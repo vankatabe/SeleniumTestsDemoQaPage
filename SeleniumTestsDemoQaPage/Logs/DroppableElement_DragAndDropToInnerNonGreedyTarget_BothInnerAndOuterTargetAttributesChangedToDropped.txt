@@ -1,0 +1,9 @@
+Test full name:	SeleniumTestsDemoQaPage.DroppableTests.DroppableElement_DragAndDropToInnerNonGreedyTarget_BothInnerAndOuterTargetAttributesChangedToDropped
+
+Work directory:	C:\Users\vaneto
+
+Pass count:	0
+
+Result:	Failed:Error
+
+Message:	OpenQA.Selenium.NoSuchElementException : Unable to locate element: #draggableprop

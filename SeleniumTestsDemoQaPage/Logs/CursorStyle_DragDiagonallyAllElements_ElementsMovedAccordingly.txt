@@ -1,6 +1,6 @@
 Test full name:	SeleniumTestsDemoQaPage.DraggableTests.CursorStyle_DragDiagonallyAllElements_ElementsMovedAccordingly
 
-Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+Work directory:	C:\Users\vaneto
 
 Pass count:	0
 

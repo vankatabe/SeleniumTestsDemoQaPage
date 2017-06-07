@@ -1,6 +1,6 @@
-Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests.HobbyCheckboxes_Unchecked_ErrorMessage
+Test full name:	SeleniumTestsDemoQaPage.RegistrationFormTests_dataDriven_olderWay.HobbyCheckboxes_Unchecked_ErrorMessage
 
-Work directory:	C:\Users\vaneto\Documents\Visual Studio 2015\Projects\SeleniumTestsDemoQaPage\SeleniumTestsDemoQaPage\bin\Debug
+Work directory:	C:\Users\vaneto
 
 Pass count:	0
 
